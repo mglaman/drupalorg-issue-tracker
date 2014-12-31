@@ -25,16 +25,25 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" novalidate>
-                    <div class="form-group">
-                        <label for="addIssueNid" class="sr-only">Issue Node ID</label>
-                        <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
+                    <div class="input-group-sm">
+                        <div class="form-group-sm pull-left">
+                            <label for="addIssueNid" class="sr-only">Issue Node ID</label>
+                            <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
+                        </div>
+                        <span class="input-group-btn pull-left">
+                            <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
+                        </span>
                     </div>
-                    <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
                 </form>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
+        <div class="well-sm">
+            <div class="form-group">
+                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search" class="form-control form"/>
+            </div>
+        </div>
         <table class="table issues-table">
             <thead>
                 <tr>
@@ -49,7 +58,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse track by $index">
+                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index">
                     <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
                     <td>{{ issue.summary }}</td>
                     <td>{{ issue.status | statusLabelFilter }}</td>
