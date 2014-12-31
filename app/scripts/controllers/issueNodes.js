@@ -1,11 +1,10 @@
 'use strict';
 
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', function($scope, $http) {
-  $scope.storage = chrome.storage.local;
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeStorage', function($scope, $http, chromeStorage) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
 
-  $scope.storage.get('issueNodes', function(result) {
+  chromeStorage.get('issueNodes', function(result) {
     $scope.$apply(function() {
       $scope.loadIssues(result);
     });
@@ -18,7 +17,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', function
   };
 
   $scope.saveIssues = function() {
-    $scope.storage.set({"issueNodes": $scope.issues});
+    chromeStorage.set({"issueNodes": $scope.issues});
   };
 
   $scope.addIssue = function(newIssue) {
