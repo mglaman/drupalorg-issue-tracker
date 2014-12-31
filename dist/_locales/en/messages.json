@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "DrupalIssues",
+        "description": "The name of the application"
+    },
+    "appDescription": {
+        "message": "Task list of Drupal.org issues.",
+        "description": "The description of the application"
+    }
+}

@@ -1,0 +1,59 @@
+html,body {
+  overflow: auto;
+}
+body {
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+.navbar-default {
+  background: #0678BE;
+  border-color: #53B0EB;
+}
+.navbar-default .navbar-brand {
+  color: #f5f5f5;
+}
+.navbar-default .navbar-brand:hover {
+  color: #F6F6F2;
+}
+.navbar-brand-image {
+  float: left;
+  display: inline-block;
+}
+
+.issues-table tr:hover {
+  box-shadow: inset 0 0 1px black;
+}
+
+/** Issue Status Colors **/
+.issue-node-status--1 td {
+  background-color: #f9f9f9;
+}
+
+.issue-node-status--2 td,
+.issue-node-status--14 td,
+.issue-node-status--15 td {
+  background-color: #d7ffd8;
+}
+
+.issue-node-status--3 td,
+.issue-node-status--5 td
+.issue-node-status--6 td,
+.issue-node-status--7 td,
+.issue-node-status--18 td {
+  background-color: #fddddd;
+}
+
+.issue-node-status--4 td,
+.issue-node-status--16 td {
+  background-color: #eff1f3;
+}
+
+.issue-node-status--8 td {
+  background-color: #ffffdd;
+}
+
+.issue-node-status--13 td {
+  background-color: #ffece8;
+}
+

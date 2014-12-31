@@ -1,0 +1,82 @@
+<!doctype html>
+<html data-ng-app="DrupalIssuesApp" data-ng-csp>
+    <head>
+        <meta charset="utf-8">
+        <title>DrupalIssues</title>
+
+        <!-- build:css styles/app.css -->
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <base target="_blank">
+    </head>
+    <body data-ng-controller="DrupalIssuesController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="images/drupal-48.png" class="navbar-brand-image"/>
+                <span class="navbar-brand">Drupal.org Issues</span>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" novalidate>
+                    <div class="form-group">
+                        <label for="addIssueNid" class="sr-only">Issue Node ID</label>
+                        <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <table class="table issues-table">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="" data-ng-click="issueOrderBy = 'nid'; reverse=!reverse">Issue #</a>
+                    </th>
+                    <th>Summary</th>
+                    <th>
+                        <a href="" data-ng-click="issueOrderBy = 'status'; reverse=!reverse">Status</a>
+                    </th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse">
+                    <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
+                    <td>{{ issue.summary }}</td>
+                    <td>{{ issue.status | statusLabelFilter }}</td>
+                    <td>
+                        <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                            <span class="sr-only">Refresh</span>
+                        </button>
+                        <button data-ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span class="sr-only">Remove</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="vendor/angularjs/angular.min.js"></script>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/issueNodes.js"></script>
+    <script src="scripts/filters/statusFilter.js"></script>
+    <script src="scripts/filters/orderObjectBy.js"></script>
+    <!-- endbuild -->
+    </body>
+</html>
