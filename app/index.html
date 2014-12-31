@@ -49,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse">
+                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse track by $index">
                     <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
                     <td>{{ issue.summary }}</td>
                     <td>{{ issue.status | statusLabelFilter }}</td>
