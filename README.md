@@ -16,8 +16,9 @@ you're going to want to track important issues that will affect your development
 
 ## Use it!
 
-Currently this app is not on the Chrome Web Store. To get it running you'll need to load it as an unpacked extension.
+Get the app from the [Chrome Web Store](https://chrome.google.com/webstore/detail/drupal-issue-tracking/gigmieclehjecoglmlmgokcekfklonmb), or follow the instructions below to use the dev HEAD
 
+* Clone the repository (make sure you're on dev branch.)
 * Visit the Extensions page (chrome://extensions/).
 * Load unpacked Extension
 * Point file browser to /path/to/drupalorg-issue-tracker/app
