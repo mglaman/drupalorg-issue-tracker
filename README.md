@@ -14,5 +14,14 @@ of modules (Panopoly, Open Atrium.) You're not only patching contribute projects
 Reading a makefile doesn't exactly highlight all of your patches and their status. Also, if you're building a product, 
 you're going to want to track important issues that will affect your development.
 
+## Use it!
+
+Currently this app is not on the Chrome Web Store. To get it running you'll need to load it as an unpacked extension.
+
+* Visit the Extensions page (chrome://extensions/).
+* Load unpacked Extension
+* Point file browser to /path/to/drupalorg-issue-tracker/app
+  * Key is to point to the "app" folder, could do "dist", but "app" is like HEAD
+* Launch!
 
 Icons from the [Iconza Circle Social](https://www.iconfinder.com/iconsets/iconza-circle-social) icon set
