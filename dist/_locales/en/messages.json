@@ -1,10 +1,10 @@
 {
     "appName": {
-        "message": "DrupalIssues",
+        "message": "Drupal Issue Tracking",
         "description": "The name of the application"
     },
     "appDescription": {
-        "message": "Task list of Drupal.org issues.",
+        "message": "Provides a simple way to track issues of interest",
         "description": "The description of the application"
     }
 }

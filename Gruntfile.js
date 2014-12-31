@@ -1,5 +1,11 @@
 'use strict';
 
+// # Globbing
+// for performance reasons we're only matching one level down:
+// 'test/spec/{,*/}*.js'
+// use this if you want to recursively match all subfolders:
+// 'test/spec/**/*.js'
+
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
@@ -55,6 +61,45 @@ module.exports = function (grunt) {
           '<%= config.app %>/manifest.json',
           '<%= config.app %>/_locales/{,*/}*.json'
         ]
+      }
+    },
+
+    // Grunt server and debug server settings
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        // change this to '0.0.0.0' to access the server from outside
+        hostname: 'localhost',
+        open: true,
+      },
+      server: {
+        options: {
+          middleware: function(connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use('/bower_components', connect.static('./bower_components')),
+              connect.static(config.app)
+            ];
+          }
+        }
+      },
+      chrome: {
+        options: {
+          open: false,
+          base: [
+            '<%= config.app %>'
+          ]
+        }
+      },
+      test: {
+        options: {
+          open: false,
+          base: [
+            'test',
+            '<%= config.app %>'
+          ]
+        }
       }
     },
 
@@ -172,6 +217,32 @@ module.exports = function (grunt) {
       }
     },
 
+    // By default, your `index.html`'s <!-- Usemin block --> will take care of
+    // minification. These next options are pre-configured if you do not wish
+    // to use the Usemin blocks.
+    // cssmin: {
+    //   dist: {
+    //     files: {
+    //       '<%= config.dist %>/styles/main.css': [
+    //         '.tmp/styles/{,*/}*.css',
+    //         '<%= config.app %>/styles/{,*/}*.css'
+    //       ]
+    //     }
+    //   }
+    // },
+    // uglify: {
+    //   dist: {
+    //     files: {
+    //       '<%= config.dist %>/scripts/scripts.js': [
+    //         '<%= config.dist %>/scripts/scripts.js'
+    //       ]
+    //     }
+    //   }
+    // },
+    // concat: {
+    //   dist: {}
+    // },
+
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -213,7 +284,7 @@ module.exports = function (grunt) {
       ],
       test: [
         'copy:styles'
-      ]
+      ],
     },
 
     // Merge event page, update build number, exclude the debug script
@@ -239,7 +310,7 @@ module.exports = function (grunt) {
         options: {
           archive: function() {
             var manifest = grunt.file.readJSON('app/manifest.json');
-            return 'package/Chrome apps-' + manifest.version + '.zip';
+            return 'package/drupalorg-issue-tracker-' + manifest.version + '.zip';
           }
         },
         files: [{
@@ -255,13 +326,13 @@ module.exports = function (grunt) {
   grunt.registerTask('debug', function (platform) {
     var watch = grunt.config('watch');
     platform = platform || 'chrome';
-    
+
 
     // Configure style task for debug:server task
     if (platform === 'server') {
       watch.styles.tasks = ['newer:copy:styles'];
       watch.styles.options.livereload = false;
-      
+
     }
 
     // Configure updated watch task
@@ -274,6 +345,11 @@ module.exports = function (grunt) {
       'watch'
     ]);
   });
+
+  grunt.registerTask('test', [
+    'connect:test',
+    'mocha'
+  ]);
 
   grunt.registerTask('build', [
     'clean:dist',
