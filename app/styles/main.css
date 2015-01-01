@@ -91,6 +91,23 @@ a {
   width: 100px;
 }
 
+.author-meta {
+  line-height: 18px;
+  text-align: right;
+}
+.author-social-links {
+  margin: 0;
+  padding: 0 0 0 10px;
+  display: inline-block;
+  list-style: none;
+  font-size: 18px;
+}
+.author-social-links li {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
 /** Issue Status Colors **/
 .issue-node-status--1 td {
   background-color: #f9f9f9;
