@@ -42,7 +42,7 @@
     <div class="container-fluid">
         <div class="well-sm">
             <div class="form-group">
-                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search" class="form-control form"/>
+                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="form-control form"/>
             </div>
         </div>
         <table class="table issues-table">
@@ -61,15 +61,15 @@
             <tbody>
                 <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index">
                     <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
-                    <td>{{ issue.summary }}</td>
+                    <td>{{ issue.summary }}<br /><small><strong>{{ issue.project }}</strong></small></td>
                     <td>{{ issue.status | statusLabelFilter }}</td>
                     <td>
                         <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                            <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spinner': ajaxInProcess}" aria-hidden="true"></span>
                             <span class="sr-only">Refresh</span>
                         </button>
                         <button data-ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span class="fa fa-remove" aria-hidden="true"></span>
                             <span class="sr-only">Remove</span>
                         </button>
                     </td>
@@ -110,6 +110,7 @@
     <script src="scripts/controllers/issueNodes.js"></script>
     <script src="scripts/filters/statusFilter.js"></script>
     <script src="scripts/filters/orderObjectBy.js"></script>
+    <script src="scripts/services/nodeService.js"></script>
     <!-- endbuild -->
     </body>
 </html>

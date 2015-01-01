@@ -1,8 +1,9 @@
 'use strict';
 
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeStorage', function($scope, $http, chromeStorage) {
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeStorage', 'nodeEndpoint', 'nodeService', function($scope, $http, chromeStorage, nodeEndpoint, nodeService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
+  $scope.ajaxInProcess = false;
 
   chromeStorage.get('issueNodes', function(result) {
     $scope.$apply(function() {
@@ -31,23 +32,30 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
   };
 
   $scope.refreshIssue = function(nid) {
-    var request = $http({
-      method: 'get',
-      url: 'https://www.drupal.org/api-d7/node/' + nid
-    });
-    request.then(
-      // Success
-      function(response) {
-        var data = response.data;
-        console.log(data);
-        $scope.issues[data.nid] = {
-          'nid': data.nid,
-          'summary': data.title,
-          'status': data.field_issue_status,
-          'project': data.field_project.id
-        };
-        $scope.saveIssues();
-      }
-    );
+    $scope.ajaxInProcess = true;
+
+    nodeService.getNode(nid)
+      .success(function(issueData) {
+        console.log(issueData);
+
+        nodeService.getNode(issueData.field_project.id)
+          .success(function(projectData) {
+            console.log(projectData);
+
+            $scope.issues[issueData.nid] = {
+              'nid': issueData.nid,
+              'summary': issueData.title,
+              'status': issueData.field_issue_status,
+              'project': projectData.title
+            };
+            $scope.saveIssues();
+
+            $scope.ajaxInProcess = false;
+          });
+      })
+      .error(function(data) {
+        // Ensure ajaxInProcess is false.
+        $scope.ajaxInProcess = false;
+      });
   }
 }]);
