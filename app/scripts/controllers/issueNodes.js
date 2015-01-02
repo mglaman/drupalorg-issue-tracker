@@ -4,6 +4,11 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
+  $scope.alerts = [];
+
+  $scope.closeAlert = function(index) {
+    $scope.alerts.splice(index, 1);
+  };
 
   chromeStorage.get('issueNodes', function(result) {
     $scope.$apply(function() {
@@ -28,6 +33,10 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
 
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
+    $scope.alerts.push({
+      type: 'success',
+      message: 'Removed #' + nid
+    });
     $scope.saveIssues();
   };
 
@@ -50,11 +59,19 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
             };
             $scope.saveIssues();
 
+            $scope.alerts.push({
+              type: 'success',
+              message: 'Retrieved data for #' + newIssue.nid
+            });
             $scope.ajaxInProcess = false;
           });
       })
-      .error(function(data) {
+      .error(function(data, status, headers, config) {
         // Ensure ajaxInProcess is false.
+        $scope.alerts.push({
+          type: 'danger',
+          message: 'Sorry, there was an error processing the node ID'
+        });
         $scope.ajaxInProcess = false;
       });
   }
