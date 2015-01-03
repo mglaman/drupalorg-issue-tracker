@@ -257,7 +257,6 @@ module.exports = function (grunt) {
             '{,*/}*.html',
             'styles/fonts/{,*/}*.*',
             '_locales/{,*/}*.json',
-            'vendor/*/**'
           ]
         }]
       },

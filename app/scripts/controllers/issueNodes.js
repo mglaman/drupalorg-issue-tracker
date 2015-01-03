@@ -61,7 +61,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
 
             $scope.alerts.push({
               type: 'success',
-              message: 'Retrieved data for #' + newIssue.nid
+              message: 'Retrieved data for #' + issueData.nid
             });
             $scope.ajaxInProcess = false;
           });
