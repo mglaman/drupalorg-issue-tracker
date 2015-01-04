@@ -6,6 +6,24 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
   $scope.ajaxInProcess = false;
   $scope.alerts = [];
 
+  /**
+   * Adds an alert to be displayed.
+   *
+   * @param type
+   * @param message
+   */
+  $scope.addAlert = function(type, message) {
+    $scope.alerts.push({
+      type: type,
+      msg: message
+    });
+  };
+
+  /**
+   * Removes an alert.
+   *
+   * @param index
+   */
   $scope.closeAlert = function(index) {
     $scope.alerts.splice(index, 1);
   };
@@ -33,10 +51,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
 
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
-    $scope.alerts.push({
-      type: 'success',
-      message: 'Removed #' + nid
-    });
+    $scope.addAlert('success', 'Removed #' + nid);
     $scope.saveIssues();
   };
 
@@ -58,20 +73,14 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
               'project': projectData.title
             };
             $scope.saveIssues();
+            $scope.addAlert('success','Retrieved data for #' + issueData.nid);
 
-            $scope.alerts.push({
-              type: 'success',
-              message: 'Retrieved data for #' + issueData.nid
-            });
             $scope.ajaxInProcess = false;
           });
       })
       .error(function(data, status, headers, config) {
         // Ensure ajaxInProcess is false.
-        $scope.alerts.push({
-          type: 'danger',
-          message: 'Sorry, there was an error processing the node ID'
-        });
+        $scope.addAlert('danger', 'Sorry, there was an error processing the node ID');
         $scope.ajaxInProcess = false;
       });
   }
