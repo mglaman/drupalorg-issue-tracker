@@ -56,7 +56,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
   };
 
   $scope.refreshIssue = function(nid) {
-    $scope.ajaxInProcess = true;
+    $scope.ajaxInProcess = nid;
 
     nodeService.getNode(nid)
       .success(function(issueData) {

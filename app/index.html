@@ -71,7 +71,7 @@
                     <td>{{ issue.status | statusLabelFilter }}</td>
                     <td>
                         <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spinner': ajaxInProcess}" aria-hidden="true"></span>
+                            <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
                             <span class="sr-only">Refresh</span>
                         </button>
                         <button data-ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
