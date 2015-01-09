@@ -45,7 +45,7 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</alert>
         <div class="well-sm">
             <div class="form-group">
                 <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="form-control form"/>
