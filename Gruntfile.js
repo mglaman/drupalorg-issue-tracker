@@ -133,13 +133,56 @@ module.exports = function (grunt) {
       ]
     },
 
-    // Mocha testing framework configuration options
-    mocha: {
+    jasmine: {
       all: {
+        src: [
+          '<%= config.app %>/scripts/chrome-api-stub.js',
+          '<%= config.app %>/scripts/app.js',
+          '<%= config.app %>/scripts/*/*.js'
+        ],
         options: {
-          run: true,
-          urls: ['http://localhost:<%= connect.options.port %>/index.html']
+          vendor: [
+            '<%= config.app %>/bower_components/jquery/dist/jquery.js',
+            '<%= config.app %>/bower_components/angular/angular.js',
+            'test/angular-mocks/angular-mocks.js',
+            '<%= config.app %>/bower_components/bootstrap/dist/js/bootstrap.js'
+          ],
+          specs: 'test/spec/**/*.js'
         }
+      }
+    },
+
+    // Compiles Sass to CSS and generates necessary files if requested
+    compass: {
+      options: {
+        sassDir: '<%= config.app %>/styles',
+        cssDir: '<%= config.dist %>/styles',
+        generatedImagesDir: '<%= config.dist %>/images/generated',
+        imagesDir: '<%= config.app %>/images',
+        javascriptsDir: '<%= config.app %>/scripts',
+        fontsDir: '<%= config.app %>/styles/fonts',
+        importPath: '<%= config.app %>/bower_components',
+        httpImagesPath: '/images',
+        httpGeneratedImagesPath: '/images/generated',
+        httpFontsPath: '/styles/fonts',
+        relativeAssets: false,
+        assetCacheBuster: false
+      },
+      server: {
+        options: {
+          cssDir: '.tmp/styles',
+          generatedImagesDir: '.tmp/images/generated',
+          debugInfo: true
+        }
+      },
+      chrome: {
+        options: {
+          cssDir: '<%= config.app %>/styles',
+          generatedImagesDir: '<%= config.app %>/images/generated',
+          debugInfo: true
+        }
+      },
+      dist: {
       }
     },
 
@@ -148,6 +191,10 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= config.app %>/index.html'],
         ignorePath: '<%= config.app %>/'
+      },
+      sass: {
+        src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+        ignorePath: '<%= config.app %>/bower_components/'
       }
     },
 
@@ -285,12 +332,15 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
+        'compass:server',
         'copy:styles'
       ],
       chrome: [
+        'compass:server',
         'copy:styles'
       ],
       dist: [
+        'compass:server',
         'copy:styles',
         'imagemin',
         'svgmin'
@@ -340,6 +390,11 @@ module.exports = function (grunt) {
     var watch = grunt.config('watch');
     platform = platform || 'chrome';
 
+    // Configure compass task for debug[server:chrome] task
+    watch.compass = {
+      files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+      tasks: ['compass:' + platform]
+    };
 
     // Configure style task for debug:server task
     if (platform === 'server') {
@@ -361,7 +416,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'connect:test',
-    'mocha'
+    'jasmine'
   ]);
 
   grunt.registerTask('build', [
