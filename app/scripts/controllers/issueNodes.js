@@ -1,6 +1,6 @@
 'use strict';
 
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeStorage', 'nodeEndpoint', 'nodeService', function($scope, $http, chromeStorage, nodeEndpoint, nodeService) {
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', 'chromeStorage', 'nodeEndpoint', 'nodeService', function($scope, $http, $timeout, chromeStorage, nodeEndpoint, nodeService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
@@ -83,5 +83,24 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', 'chromeS
         $scope.addAlert('danger', 'Sorry, there was an error processing the node ID');
         $scope.ajaxInProcess = false;
       });
-  }
+  };
+
+  $scope.refreshIssues = function() {
+    $scope.ajaxInProcess = true;
+
+    var keys = Object.keys($scope.issues);
+    var counter = 0;
+    var max = keys.length;
+
+    var processIssue = function() {
+      if (counter < max) {
+        $scope.refreshIssue(keys[counter]);
+        counter++;
+        $timeout(processIssue, 1000);
+      }
+    };
+    $timeout(processIssue, 1000);
+
+    $scope.ajaxInProcess = false;
+  };
 }]);

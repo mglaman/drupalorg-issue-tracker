@@ -31,7 +31,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" novalidate>
-                    <div class="input-group-sm">
+                    <div class="input-group-sm pull-right">
                         <div class="form-group-sm pull-left">
                             <label for="addIssueNid" class="sr-only">Issue Node ID</label>
                             <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
@@ -41,6 +41,14 @@
                         </span>
                     </div>
                 </form>
+                <div class="navbar-form navbar-right">
+                    <div class="input-group-sm pull-right">
+                        <button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">
+                            <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
+                            <span class="">Refresh All</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
