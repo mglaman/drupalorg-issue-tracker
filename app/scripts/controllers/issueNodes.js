@@ -1,6 +1,6 @@
 'use strict';
 
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', 'chromeStorage', 'nodeEndpoint', 'nodeService', function($scope, $http, $timeout, chromeStorage, nodeEndpoint, nodeService) {
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, chromeStorage, nodeEndpoint, nodeService, ModalService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
@@ -69,6 +69,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
             $scope.issues[issueData.nid] = {
               'nid': issueData.nid,
               'summary': issueData.title,
+              'body': issueData.body.value,
               'status': issueData.field_issue_status,
               'project': projectData.title
             };
@@ -102,5 +103,17 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
     $timeout(processIssue, 1000);
 
     $scope.ajaxInProcess = false;
+  };
+
+  $scope.openIssue = function(issue) {
+    ModalService.showModal({
+      templateUrl: "templates/modal.html",
+      controller: "ModalController",
+      inputs: {
+        issue: issue
+      }
+    }).then(function(modal) {
+      modal.element.modal();
+    });
   };
 }]);

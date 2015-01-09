@@ -78,6 +78,10 @@
                     <td>{{ issue.summary }}<br /><small><strong>{{ issue.project }}</strong></small></td>
                     <td>{{ issue.status | statusLabelFilter }}</td>
                     <td>
+                        <button data-ng-click="openIssue(issue)" class="btn btn-default btn-sm">
+                            <span class="fa fa-search-plus" aria-hidden="true"></span>
+                            <span class="sr-only">More details</span>
+                        </button>
                         <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
                             <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
                             <span class="sr-only">Refresh</span>
@@ -121,12 +125,14 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/issueNodes.js"></script>
+    <script src="scripts/controllers/modal.js"></script>
     <script src="scripts/directives/alerts.js"></script>
     <script src="scripts/filters/statusFilter.js"></script>
     <script src="scripts/filters/orderObjectBy.js"></script>
