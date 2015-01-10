@@ -4,8 +4,9 @@ A Chrome application to provide a simple method for keeping track of Drupal.org 
 
 ## Functionality
 
-Take a Drupal.org issue number (the node ID) and add it to the app. It will then utilize Drupal.org's REST APIs and keep
-track of the issue. This allows you to keep a collection of important issues and periodically check their status.
+Take a Drupal.org issue number (the node ID) and add it to the app. It will then utilize Drupal.org's REST APIs and keep track of the issue. This allows you to keep a collection of important issues and periodically check their status.
+
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/mglaman/)
 
 ## Why?
 Managing patches when developing a product is a headache. It can be especially daunting if you're extending upon a suite
