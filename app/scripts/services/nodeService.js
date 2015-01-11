@@ -5,8 +5,8 @@ DrupalIssuesApp.factory('nodeService', ['$http', '$q', 'nodeEndpoint', 'userEndp
     getNode: function(nid) {
       return $http({method: 'get', url: nodeEndpoint + nid});
     },
-    getUser: function(uid) {
-      return $http({method: 'get', url: userEndpoint + uid + '/feed'});
+    getUser: function(user) {
+      return $http({method: 'get', url: userEndpoint + user + '/feed'});
     }
   };
 }]);

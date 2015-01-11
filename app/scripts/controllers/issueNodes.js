@@ -45,10 +45,10 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   $scope.addIssue = function(newIssue) {
-    if (typeof newIssue.uid !== 'undefined') {
+    if (typeof newIssue.user !== 'undefined') {
       console.info('adding user');
-      $scope.addUser(newIssue.uid);
-      newIssue.uid = null;
+      $scope.addUser(newIssue.user);
+      newIssue.user = null;
     }
     if (typeof newIssue.nid !== 'undefined') {
       console.info('adding issue');

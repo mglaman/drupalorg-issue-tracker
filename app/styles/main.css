@@ -7,79 +7,84 @@
   font-weight: 300;
   src: local("Roboto Light"), local("Roboto-Light"), url(../fonts/Roboto/Roboto-Light.ttf) format("truetype");
 }
-
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   src: local("Roboto Regular"), local("Roboto-Regular"), url(../fonts/Roboto/Roboto-Regular.ttf) format("truetype");
 }
-
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   src: local("Roboto Medium"), local("Roboto-Medium"), url(../fonts/Roboto/Roboto-Medium.ttf) format("truetype");
 }
-
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   src: local("Roboto Bold"), local("Roboto-Bold"), url(../fonts/Roboto/Roboto-Bold.ttf) format("truetype");
 }
-
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   src: local("Roboto Italic"), local("Roboto-Italic"), url(../fonts/Roboto/Roboto-Italic.ttf) format("truetype");
 }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000338}}
 html, body {
   overflow: auto;
   font-family: 'Roboto', sans-serif;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000342}}
 body {
   padding-top: 60px;
   -webkit-user-select: initial;
   cursor: initial;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000348}}
 a {
   transition: color 0.3s ease;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000351}}
 .btn {
   transition: background-color 0.15s ease;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000355}}
 .navbar-default {
   background: #0678BE;
   border-color: #53B0EB;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000358}}
 .navbar-default .navbar-brand {
   color: #f5f5f5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000360}}
 .navbar-default .navbar-brand:hover {
   color: #F6F6F2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000365}}
 .navbar-brand-image {
   float: left;
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000370}}
+.issues--add-form {
+  padding: 0 5px 0 0;
+  margin: 8px 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000374}}
+.issues--add-form .navbar-form .btn {
+  margin-top: 5px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000380}}
 .panel-footer {
   background: #0678BE;
   border-top: 2px solid #53B0EB;
@@ -87,35 +92,35 @@ a {
   font-size: 12px;
   font-weight: 100;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000386}}
 .panel-footer a {
   color: #f5f5f5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000391}}
 .issues-table {
   table-layout: fixed;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000393}}
 .issues-table .issue-number {
   width: 100px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000396}}
 .issues-table .issue-status {
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000399}}
 .issues-table .issue-operations {
   width: 125px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000394}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003104}}
 .author-meta {
   line-height: 18px;
   text-align: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003108}}
 .author-social-links {
   margin: 0;
   padding: 0 0 0 10px;
@@ -123,27 +128,27 @@ a {
   list-style: none;
   font-size: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003114}}
 .author-social-links li {
   margin: 0;
   padding: 0;
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003113}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003120}}
 .author-social-links
 .issue-node-status--1 td {
   background-color: #f9f9f9;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003127}}
 .issue-node-status--2 td,
 .issue-node-status--14 td,
 .issue-node-status--15 td {
   background-color: #d7ffd8;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003127}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003133}}
 .issue-node-status--3 td,
 .issue-node-status--5 td
 .issue-node-status--6 td,
@@ -152,18 +157,18 @@ a {
   background-color: #fddddd;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003141}}
 .issue-node-status--4 td,
 .issue-node-status--16 td {
   background-color: #eff1f3;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003146}}
 .issue-node-status--8 td {
   background-color: #ffffdd;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/mglaman\/Chrome\/drupalorg-issue-tracker\/app\/styles\/main\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003150}}
 .issue-node-status--13 td {
   background-color: #ffece8;
 }
