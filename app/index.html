@@ -36,6 +36,10 @@
                             <label for="addIssueNid" class="sr-only">Issue Node ID</label>
                             <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
                         </div>
+                        <div class="form-group-sm pull-left">
+                            <label for="addIssueUid" class="sr-only">User ID</label>
+                            <input id="addIssueUid" type="text" data-ng-model="newIssue.uid" class="form-control" placeholder="User ID"/>
+                        </div>
                         <span class="input-group-btn pull-left">
                             <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
                         </span>
