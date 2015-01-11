@@ -67,6 +67,16 @@ a {
   display: inline-block;
 }
 
+.issues--add-form {
+  padding: 0 5px 0 0;
+  margin: 8px 0;
+  .navbar-form {
+    .btn {
+      margin-top: 5px;
+    }
+  }
+}
+
 .panel-footer {
   background: #0678BE;
   border-top: 2px solid #53B0EB;

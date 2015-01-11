@@ -30,17 +30,30 @@
                 <span class="navbar-brand">Drupal.org Issues</span>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" novalidate>
-                    <div class="input-group-sm pull-right">
-                        <div class="form-group-sm pull-left">
-                            <label for="addIssueNid" class="sr-only">Issue Node ID</label>
-                            <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
+                <ul class="nav navbar-right issues--add-form">
+                    <li class="dropdown">
+                        <div class="dropdown-toggle btn btn-success btn-sm" data-toggle="dropdown" id="navLogin">
+                            <i class="fa fa-plus"></i><span class="sr-only">Add+</span></div>
+                        <div class="dropdown-menu">
+                            <form class="navbar-form" novalidate>
+                                <div class="form-group-sm">
+                                    <label for="addIssueNid" class="sr-only">Issue Node ID</label>
+                                    <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
+                                </div>
+                                <div class="text-center">OR</div>
+                                <div class="form-group-sm">
+                                    <label for="addIssueUid" class="sr-only">Username</label>
+                                    <input id="addIssueUid" type="text" data-ng-model="newIssue.user" class="form-control" placeholder="Username"/>
+                                </div>
+                                <div class="btn-group btn-group-justified">
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <span class="input-group-btn pull-left">
-                            <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
-                        </span>
-                    </div>
-                </form>
+                    </li>
+                </ul>
                 <div class="navbar-form navbar-right">
                     <div class="input-group-sm pull-right">
                         <button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">

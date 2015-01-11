@@ -45,14 +45,41 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   $scope.addIssue = function(newIssue) {
-    $scope.refreshIssue(newIssue.nid);
-    newIssue.nid = null;
+    if (typeof newIssue.user !== 'undefined') {
+      console.info('adding user');
+      $scope.addUser(newIssue.user);
+      newIssue.user = null;
+    }
+    if (typeof newIssue.nid !== 'undefined') {
+      console.info('adding issue');
+      $scope.refreshIssue(newIssue.nid);
+      newIssue.nid = null;
+    }
   };
 
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
     $scope.addAlert('success', 'Removed #' + nid);
     $scope.saveIssues();
+  };
+
+  $scope.addUser = function(uid) {
+    $scope.ajaxInProcess = uid;
+
+    nodeService.getUser(uid)
+      .success(function(userData) {
+        var $xml = $($.parseXML(userData));
+        $xml.find("item").each(function() {
+          var linkArray = $(this).find('guid').text().split('/');
+          var nid = linkArray[linkArray.length-1];
+          $scope.refreshIssue(nid);
+        });
+      })
+      .error(function(data, status, headers, config) {
+        // Ensure ajaxInProcess is false.
+        $scope.addAlert('danger', 'Sorry, there was an error processing the user ID');
+        $scope.ajaxInProcess = false;
+      });
   };
 
   $scope.refreshIssue = function(nid) {
