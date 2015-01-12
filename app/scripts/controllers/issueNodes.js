@@ -95,6 +95,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
 
             $scope.issues[issueData.nid] = {
               'nid': issueData.nid,
+              'refreshed': Date.now(),
               'summary': issueData.title,
               'body': issueData.body.value,
               'status': issueData.field_issue_status,
@@ -108,7 +109,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
       })
       .error(function(data, status, headers, config) {
         // Ensure ajaxInProcess is false.
-        $scope.addAlert('danger', 'Sorry, there was an error processing the node ID');
+        $scope.addAlert('danger', 'Sorry, there was an error processing the node ID ' + nid);
         $scope.ajaxInProcess = false;
       });
   };
