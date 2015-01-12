@@ -30,7 +30,15 @@
                 <span class="navbar-brand">Drupal.org Issues</span>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-right issues--add-form">
+                <ul class="nav navbar-nav navbar-right issues--add-form">
+                    <li>
+                        <div class="input-group-sm">
+                            <button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">
+                                <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
+                                <span class="">Refresh All</span>
+                            </button>
+                        </div>
+                    </li>
                     <li class="dropdown">
                         <div class="dropdown-toggle btn btn-success btn-sm" data-toggle="dropdown" id="navLogin">
                             <i class="fa fa-plus"></i><span class="sr-only">Add+</span></div>
@@ -53,15 +61,15 @@
                             </form>
                         </div>
                     </li>
+                    <li>
+                        <div class="input-group-sm">
+                            <button data-ng-click="openSettings()" class="btn btn-info btn-sm">
+                                <span class="fa fa-cogs" aria-hidden="true"></span>
+                                <span class="sr-only">Settings</span>
+                            </button>
+                        </div>
+                    </li>
                 </ul>
-                <div class="navbar-form navbar-right">
-                    <div class="input-group-sm pull-right">
-                        <button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">
-                            <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
-                            <span class="">Refresh All</span>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
@@ -96,7 +104,7 @@
                             <span class="sr-only">More details</span>
                         </button>
                         <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
+                            <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spin fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
                             <span class="sr-only">Refresh</span>
                         </button>
                         <button data-ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
@@ -146,6 +154,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/issueNodes.js"></script>
     <script src="scripts/controllers/modal.js"></script>
+    <script src="scripts/controllers/settingsModal.js"></script>
     <script src="scripts/directives/alerts.js"></script>
     <script src="scripts/filters/statusFilter.js"></script>
     <script src="scripts/filters/orderObjectBy.js"></script>

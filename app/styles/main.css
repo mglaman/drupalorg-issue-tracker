@@ -7,84 +7,93 @@
   font-weight: 300;
   src: local("Roboto Light"), local("Roboto-Light"), url(../fonts/Roboto/Roboto-Light.ttf) format("truetype");
 }
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   src: local("Roboto Regular"), local("Roboto-Regular"), url(../fonts/Roboto/Roboto-Regular.ttf) format("truetype");
 }
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   src: local("Roboto Medium"), local("Roboto-Medium"), url(../fonts/Roboto/Roboto-Medium.ttf) format("truetype");
 }
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   src: local("Roboto Bold"), local("Roboto-Bold"), url(../fonts/Roboto/Roboto-Bold.ttf) format("truetype");
 }
+
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   src: local("Roboto Italic"), local("Roboto-Italic"), url(../fonts/Roboto/Roboto-Italic.ttf) format("truetype");
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000338}}
+
+/* line 38, main.scss */
 html, body {
   overflow: auto;
   font-family: 'Roboto', sans-serif;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000342}}
+/* line 42, main.scss */
 body {
   padding-top: 60px;
   -webkit-user-select: initial;
   cursor: initial;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000348}}
+/* line 48, main.scss */
 a {
   transition: color 0.3s ease;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000351}}
+/* line 51, main.scss */
 .btn {
   transition: background-color 0.15s ease;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000355}}
+/* line 55, main.scss */
 .navbar-default {
   background: #0678BE;
   border-color: #53B0EB;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000358}}
+/* line 58, main.scss */
 .navbar-default .navbar-brand {
   color: #f5f5f5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000360}}
+/* line 60, main.scss */
 .navbar-default .navbar-brand:hover {
   color: #F6F6F2;
 }
+/* line 65, main.scss */
+.navbar-default .navbar-nav > li {
+  padding: 0 5px;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000365}}
+/* line 70, main.scss */
 .navbar-brand-image {
   float: left;
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000370}}
+/* line 75, main.scss */
 .issues--add-form {
   padding: 0 5px 0 0;
   margin: 8px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000374}}
+/* line 79, main.scss */
 .issues--add-form .navbar-form .btn {
   margin-top: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000380}}
+/* line 85, main.scss */
 .panel-footer {
   background: #0678BE;
   border-top: 2px solid #53B0EB;
@@ -92,35 +101,35 @@ a {
   font-size: 12px;
   font-weight: 100;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000386}}
+/* line 91, main.scss */
 .panel-footer a {
   color: #f5f5f5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000391}}
+/* line 96, main.scss */
 .issues-table {
   table-layout: fixed;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000393}}
+/* line 98, main.scss */
 .issues-table .issue-number {
   width: 100px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000396}}
+/* line 101, main.scss */
 .issues-table .issue-status {
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\0000399}}
+/* line 104, main.scss */
 .issues-table .issue-operations {
   width: 125px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003104}}
+/* line 109, main.scss */
 .author-meta {
   line-height: 18px;
   text-align: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003108}}
+/* line 113, main.scss */
 .author-social-links {
   margin: 0;
   padding: 0 0 0 10px;
@@ -128,27 +137,27 @@ a {
   list-style: none;
   font-size: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003114}}
+/* line 119, main.scss */
 .author-social-links li {
   margin: 0;
   padding: 0;
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003120}}
+/* line 128, main.scss */
 .author-social-links
 .issue-node-status--1 td {
   background-color: #f9f9f9;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003127}}
+/* line 134, main.scss */
 .issue-node-status--2 td,
 .issue-node-status--14 td,
 .issue-node-status--15 td {
   background-color: #d7ffd8;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003133}}
+/* line 142, main.scss */
 .issue-node-status--3 td,
 .issue-node-status--5 td
 .issue-node-status--6 td,
@@ -157,18 +166,18 @@ a {
   background-color: #fddddd;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003141}}
+/* line 147, main.scss */
 .issue-node-status--4 td,
 .issue-node-status--16 td {
   background-color: #eff1f3;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003146}}
+/* line 151, main.scss */
 .issue-node-status--8 td {
   background-color: #ffffdd;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/mglaman\/Chrome\%20apps\/DrupalIssues\/app\/styles\/main\.scss}line{font-family:\00003150}}
+/* line 155, main.scss */
 .issue-node-status--13 td {
   background-color: #ffece8;
 }

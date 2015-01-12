@@ -143,4 +143,19 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
       modal.element.modal();
     });
   };
+
+  $scope.openSettings = function(issue) {
+    ModalService.showModal({
+      templateUrl: "templates/settingsModal.html",
+      controller: "SettingsModalController",
+      inputs: {
+        issues: $scope.issues,
+        // hacky way to allow importing of issues w/o copy+paste of func ;)
+        // @todo: Need to move this stuff into a service (1.1.x)
+        refreshMethod: $scope.refreshIssue
+      }
+    }).then(function(modal) {
+      modal.element.modal();
+    });
+  };
 }]);
