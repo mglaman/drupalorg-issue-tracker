@@ -57,12 +57,6 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
     }
   };
 
-  $scope.removeIssue = function(nid) {
-    delete $scope.issues[nid];
-    $scope.addAlert('success', 'Removed #' + nid);
-    $scope.saveIssues();
-  };
-
   $scope.addUser = function(uid) {
     $scope.ajaxInProcess = uid;
 
@@ -91,7 +85,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
 
         nodeService.getNode(issueData.field_project.id)
           .success(function(projectData) {
-            console.log(projectData);
+            //console.log(projectData);
 
             $scope.issues[issueData.nid] = {
               'nid': issueData.nid,
@@ -131,18 +125,6 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
     $timeout(processIssue, 1000);
 
     $scope.ajaxInProcess = false;
-  };
-
-  $scope.openIssue = function(issue) {
-    ModalService.showModal({
-      templateUrl: "templates/modal.html",
-      controller: "ModalController",
-      inputs: {
-        issue: issue
-      }
-    }).then(function(modal) {
-      modal.element.modal();
-    });
   };
 
   $scope.openSettings = function(issue) {
