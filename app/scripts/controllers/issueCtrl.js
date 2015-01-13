@@ -23,7 +23,6 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
   $scope.automaticRefresh = function() {
     var currentTime = Date.now();
     if ((currentTime - $scope.issue.refreshed) > refreshTime) {
-      console.log('Refreshing issue ' + $scope.issues.nid);
       $scope.refreshIssue($scope.issue.nid)
     }
   };
