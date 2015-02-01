@@ -3,6 +3,8 @@
 DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', function($scope, $interval, ModalService) {
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
+    $interval.cancel(refreshInterval);
+    refreshInterval = undefined;
     $scope.addAlert('success', 'Removed #' + nid);
     $scope.saveIssues();
   };
