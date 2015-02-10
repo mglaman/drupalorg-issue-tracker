@@ -10,6 +10,11 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
   };
 
   $scope.openIssue = function(issue) {
+
+    // We're removing images for now.
+    // @see https://developer.chrome.com/apps/app_external#external
+    issue.body = issue.body.replace(/<img.*?\/>/ig, '');
+
     ModalService.showModal({
       templateUrl: "templates/modal.html",
       controller: "ModalController",
