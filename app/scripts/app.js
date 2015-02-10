@@ -14,4 +14,9 @@ var DrupalIssuesApp = angular.module('DrupalIssuesApp', ['angularModalService'])
         });
       }
     };
-  });;
+  })
+  .filter('objLength', function(){
+    return function(input){
+      return Object.keys(input).length;
+    }
+  });

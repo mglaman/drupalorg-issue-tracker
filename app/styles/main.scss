@@ -33,7 +33,9 @@
   src: local('Roboto Italic'), local('Roboto-Italic'), url(../fonts/Roboto/Roboto-Italic.ttf) format('truetype');
 }
 
-
+.ng-hide {
+  display: none!important;
+}
 
 html,body {
   overflow: auto;
