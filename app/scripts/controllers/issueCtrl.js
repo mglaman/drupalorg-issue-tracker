@@ -1,6 +1,4 @@
-'use strict';
-
-DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', function($scope, $interval, ModalService) {
+DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 'chromeStorage', function($scope, $interval, ModalService, chromeStorage) {
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
     $interval.cancel(refreshInterval);
@@ -26,12 +24,25 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
     });
   };
 
-  var refreshTime = 1800000 + (8000 * (Math.random()*20));
+  $scope.refreshInterval = null;
+  $scope.refreshTime = null;
+  var refreshInterval = null;
+
+  chromeStorage.get('refreshInterval', function(result) {
+    console.log(result);
+    $scope.$apply(function() {
+      $scope.refreshInterval = result.refreshInterval;
+      $scope.refreshTime = ($scope.refreshInterval * 60000) + (8000 * (Math.random()*20));
+      refreshInterval = $interval($scope.automaticRefresh, $scope.refreshTime);
+    });
+  });
+
+  //var refreshTime =
   $scope.automaticRefresh = function() {
     var currentTime = Date.now();
-    if ((currentTime - $scope.issue.refreshed) > refreshTime) {
+    if ((currentTime - $scope.issue.refreshed) > $scope.refreshTime) {
       $scope.refreshIssue($scope.issue.nid)
     }
   };
-  var refreshInterval = $interval($scope.automaticRefresh, refreshTime);
+
 }]);

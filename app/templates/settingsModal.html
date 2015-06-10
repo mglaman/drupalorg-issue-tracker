@@ -8,6 +8,16 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
+                        <label class="col-sm-3 control-label">Refresh interval</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" class="form-control" value="{{ refreshInterval }}" placeholder="30" data-ng-model="refreshInterval" data-ng-blur="setRefreshInterval(refreshInterval)"/>
+                                <span class="input-group-addon">minutes</span>
+                            </div>
+                            <p class="help-block">How many minutes before issues refresh their status. For now you need to set value, then close and reopen the app.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="exportNodeJSON" class="col-sm-3 control-label">Export node issues</label>
                         <div class="col-sm-9">
                             <textarea id="exportNodeJSON" class="form-control" rows="8" data-auto-select-text>{{ export }}</textarea>

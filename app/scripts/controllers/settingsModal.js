@@ -2,7 +2,25 @@ DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', 'ch
   $scope.issues = issues;
   $scope.refreshMethod = refreshMethod;
   $scope.export = Object.keys(issues);
+  $scope.refreshInterval = null;
   $scope.showExport = false;
+
+
+  $scope.getRefreshInterval = function() {
+    chromeStorage.get('refreshInterval', function(result) {
+      $scope.$apply(function() {
+        $scope.refreshInterval = result.refreshInterval;
+      });
+    });
+  };
+  $scope.getRefreshInterval();
+
+  $scope.setRefreshInterval = function(refreshInterval) {
+    chromeStorage.set({"refreshInterval": refreshInterval}, function() {
+      $scope.getRefreshInterval();
+    });
+
+  };
 
   $scope.exportIssues = function() {
     $scope.showExport = !$scope.showExport;
