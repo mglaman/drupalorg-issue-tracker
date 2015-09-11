@@ -19,18 +19,26 @@
     </head>
     <body data-ng-controller="DrupalIssuesController" layout="row" class="layout layout-row">
 
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open md-closed" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" style="background: #0678BE;">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-closed" md-component-id="left" tabindex="-1">
         <ng-include src="'templates/header.html'"></ng-include>
     </md-sidenav>
     <div layout="column" role="main" flex class="flex layout layout-column">
-        <md-toolbar class="md-warn" ng-show="issues | objLength">
-            <md-input-container>
-                <!--<label>Search issue number, summary, project name.</label>-->
-                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="md-input"/>
-            </md-input-container>
+        <md-toolbar class="site-content-toolbar">
+            <div class="md-toolbar-tools" ng-click="toggleSidenav()" tabindex="-1" role="button">
+                <md-button class="md-icon-button" aria-label="Show side menu" style="float: left;">
+                    <md-icon md-svg-icon="menu" ></md-icon>
+                </md-button>
+                <div layout="row" flex class="fill-height">
+                    <h2 class="md-toolbar-item md-headline">Drupal.org Issues</h2>
+                </div>
+            </div>
         </md-toolbar>
-        <md-content flex layout-padding layout-fill class="flex layout layout-padding layout-fill">
-            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</alert>
+        <md-input-container ng-show="issues | objLength" layout="row" md-no-float>
+            <!--<label>Search issue number, summary, project name.</label>-->
+            <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="md-input" style="width: 100%; line-height: 40px;"/>
+        </md-input-container>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000" layout="row">{{alert.msg}}</alert>
+        <md-content flex layout="row" layout-padding layout-fill>
             <table class="table issues-table">
                 <thead>
                 <tr>

@@ -49,49 +49,35 @@ body {
 }
 
 /* line 49, main.scss */
-a {
-  transition: color 0.3s ease;
-  color: #42a5f5;
+.panel-footer {
+  font-size: 12px;
+  font-weight: 100;
 }
 
-/* line 54, main.scss */
-.navbar .navbar-form .form-control-wrapper .form-control, .navbar .navbar-form .form-control {
-  color: #555;
-}
-
-/* line 58, main.scss */
-.navbar-form.form-inline {
-  margin: 0;
-}
 /* line 60, main.scss */
-.navbar-form.form-inline > div {
-  display: inline-block;
-}
-
-/* line 65, main.scss */
 .issues-table {
   table-layout: fixed;
 }
-/* line 67, main.scss */
+/* line 62, main.scss */
 .issues-table .issue-number {
   width: 100px;
 }
-/* line 70, main.scss */
+/* line 65, main.scss */
 .issues-table .issue-status {
-  width: 100px;
+  width: 175px;
 }
-/* line 73, main.scss */
+/* line 68, main.scss */
 .issues-table .issue-operations {
   width: 125px;
 }
 
-/* line 77, main.scss */
+/* line 72, main.scss */
 .author-meta {
   line-height: 18px;
   text-align: right;
 }
 
-/* line 81, main.scss */
+/* line 76, main.scss */
 .author-social-links {
   margin: 0;
   padding: 0 0 0 10px;
@@ -99,7 +85,7 @@ a {
   list-style: none;
   font-size: 18px;
 }
-/* line 87, main.scss */
+/* line 82, main.scss */
 .author-social-links li {
   margin: 0;
   padding: 0;
@@ -107,19 +93,19 @@ a {
 }
 
 /** Issue Status Colors **/
-/* line 95, main.scss */
+/* line 90, main.scss */
 .issue-node-status--1 td {
   background-color: #f9f9f9;
 }
 
-/* line 99, main.scss */
+/* line 94, main.scss */
 .issue-node-status--2 td,
 .issue-node-status--14 td,
 .issue-node-status--15 td {
   background-color: #d7ffd8;
 }
 
-/* line 105, main.scss */
+/* line 100, main.scss */
 .issue-node-status--3 td,
 .issue-node-status--5 td
 .issue-node-status--6 td,
@@ -128,18 +114,18 @@ a {
   background-color: #fddddd;
 }
 
-/* line 113, main.scss */
+/* line 108, main.scss */
 .issue-node-status--4 td,
 .issue-node-status--16 td {
   background-color: #eff1f3;
 }
 
-/* line 118, main.scss */
+/* line 113, main.scss */
 .issue-node-status--8 td {
   background-color: #ffffdd;
 }
 
-/* line 122, main.scss */
+/* line 117, main.scss */
 .issue-node-status--13 td {
   background-color: #ffece8;
 }

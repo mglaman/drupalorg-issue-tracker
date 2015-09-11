@@ -46,30 +46,14 @@ body {
   cursor: initial;
 }
 
-a {
-  transition: color 0.3s ease;
-  color: #42a5f5;
-}
-
-.navbar .navbar-form .form-control-wrapper .form-control, .navbar .navbar-form .form-control {
-  color: #555;
-}
-
-.navbar-form.form-inline {
-  margin: 0;
-  & > div {
-    display: inline-block;
-  }
-}
-
 .panel-footer {
-  background: #0678BE;
-  border-top: 2px solid #53B0EB;
-  color: white;
+  //background: #0678BE;
+  //border-top: 2px solid #53B0EB;
+  //color: white;
   font-size: 12px;
   font-weight: 100;
   a {
-    color: #f5f5f5;
+    //color: #f5f5f5;
   }
 }
 
@@ -79,7 +63,7 @@ a {
     width: 100px;
   }
   .issue-status {
-    width: 100px;
+    width: 175px;
   }
   .issue-operations {
     width: 125px;

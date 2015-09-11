@@ -1,10 +1,14 @@
 /*global DrupalIssuesApp*/
 'use strict';
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, chromeStorage, nodeEndpoint, nodeService, ModalService) {
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', '$mdSidenav', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, $mdSidenav, chromeStorage, nodeEndpoint, nodeService, ModalService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
   $scope.alerts = [];
+
+  $scope.toggleSidenav = function () {
+    $mdSidenav('left').toggle();
+  };
 
   /**
    * Adds an alert to be displayed.
