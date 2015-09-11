@@ -35,24 +35,9 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   chromeStorage.get('issueNodes', function(result) {
-    // Check if old local storage has data, merge into sync, purge.
-    // @todo: remove at some later date, when most people migrated.
-    //chrome.storage.local.get('issueNodes', function (result) {
-    //  console.log(result.length > 0);
-    //  if (typeof result !== 'undefined' || result.length > 0) {
-    //    $scope.$apply(function() {
-    //      $scope.loadIssues(result);
-    //    });
-    //  }
-    //  chrome.storage.local.remove('issueNodes');
-    //  $scope.saveIssues();
-    //});
-    //chrome.storage.local.remove('issueNodes');
-    if (result.length > 0) {
-      $scope.$apply(function() {
-        $scope.loadIssues(result);
-      });
-    }
+    $scope.$apply(function() {
+      $scope.loadIssues(result);
+    });
   });
 
   $scope.loadIssues = function(value) {
@@ -62,7 +47,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   $scope.saveIssues = function() {
-    chromeStorage.set({'issueNodes': JSON.stringify($scope.issues)});
+    chromeStorage.set({'issueNodes': $scope.issues});
   };
 
   $scope.addIssue = function(newIssue) {
