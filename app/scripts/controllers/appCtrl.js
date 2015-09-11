@@ -1,5 +1,5 @@
+/*global DrupalIssuesApp*/
 'use strict';
-
 DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, chromeStorage, nodeEndpoint, nodeService, ModalService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
@@ -41,7 +41,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   $scope.saveIssues = function() {
-    chromeStorage.set({"issueNodes": $scope.issues});
+    chromeStorage.set({'issueNodes': $scope.issues});
   };
 
   $scope.addIssue = function(newIssue) {
@@ -63,7 +63,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
     nodeService.getUser(uid)
       .success(function(userData) {
         var $xml = $($.parseXML(userData));
-        $xml.find("item").each(function() {
+        $xml.find('item').each(function() {
           var linkArray = $(this).find('guid').text().split('/');
           var nid = linkArray[linkArray.length-1];
           $scope.refreshIssue(nid);
@@ -127,10 +127,10 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
     $scope.ajaxInProcess = false;
   };
 
-  $scope.openSettings = function(issue) {
+  $scope.openSettings = function() {
     ModalService.showModal({
-      templateUrl: "templates/settingsModal.html",
-      controller: "SettingsModalController",
+      templateUrl: 'templates/settingsModal.html',
+      controller: 'SettingsModalController',
       inputs: {
         issues: $scope.issues,
         // hacky way to allow importing of issues w/o copy+paste of func ;)

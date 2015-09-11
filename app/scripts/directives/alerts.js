@@ -1,3 +1,4 @@
+/*global DrupalIssuesApp*/
 'use strict';
 
 DrupalIssuesApp

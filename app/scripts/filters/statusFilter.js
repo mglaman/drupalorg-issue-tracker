@@ -1,5 +1,5 @@
+/*global DrupalIssuesApp*/
 'use strict';
-
 DrupalIssuesApp.filter('statusLabelFilter', function() {
   var statusCodes = {
     1: 'Active',
@@ -23,7 +23,7 @@ DrupalIssuesApp.filter('statusLabelFilter', function() {
     }
 
     return statusCodes[input];
-  }
+  };
 });
 
 DrupalIssuesApp.filter('statusColorFilter', function() {
@@ -49,5 +49,5 @@ DrupalIssuesApp.filter('statusColorFilter', function() {
     }
 
     return statusCodes[input];
-  }
+  };
 });

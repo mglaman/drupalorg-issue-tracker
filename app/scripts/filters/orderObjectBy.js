@@ -1,5 +1,5 @@
+/*global DrupalIssuesApp, angular*/
 'use strict';
-
 DrupalIssuesApp.filter('orderObjectBy', function() {
   return function(items, field, reverse) {
     var filtered = [];
@@ -9,7 +9,9 @@ DrupalIssuesApp.filter('orderObjectBy', function() {
     filtered.sort(function (a, b) {
       return (a[field] > b[field] ? 1 : -1);
     });
-    if(reverse) filtered.reverse();
+    if (reverse) {
+      filtered.reverse();
+    }
     return filtered;
   };
 });

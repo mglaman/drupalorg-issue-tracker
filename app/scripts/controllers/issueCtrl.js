@@ -1,3 +1,5 @@
+/*global DrupalIssuesApp*/
+'use strict';
 DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 'chromeStorage', function($scope, $interval, ModalService, chromeStorage) {
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
@@ -14,8 +16,8 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
     issue.body = issue.body.replace(/<img.*?\/>/ig, '');
 
     ModalService.showModal({
-      templateUrl: "templates/modal.html",
-      controller: "ModalController",
+      templateUrl: 'templates/modal.html',
+      controller: 'ModalController',
       inputs: {
         issue: issue
       }
@@ -29,7 +31,6 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
   var refreshInterval = null;
 
   chromeStorage.get('refreshInterval', function(result) {
-    console.log(result);
     $scope.$apply(function() {
       $scope.refreshInterval = result.refreshInterval;
       $scope.refreshTime = ($scope.refreshInterval * 60000) + (8000 * (Math.random()*20));
@@ -41,7 +42,7 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
   $scope.automaticRefresh = function() {
     var currentTime = Date.now();
     if ((currentTime - $scope.issue.refreshed) > $scope.refreshTime) {
-      $scope.refreshIssue($scope.issue.nid)
+      $scope.refreshIssue($scope.issue.nid);
     }
   };
 

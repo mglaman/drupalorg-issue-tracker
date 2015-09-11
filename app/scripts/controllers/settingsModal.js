@@ -1,3 +1,5 @@
+/*global DrupalIssuesApp*/
+'use strict';
 DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', 'chromeStorage', 'issues', 'refreshMethod', 'close', function($scope, $timeout, chromeStorage, issues, refreshMethod, close) {
   $scope.issues = issues;
   $scope.refreshMethod = refreshMethod;
@@ -16,7 +18,7 @@ DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', 'ch
   $scope.getRefreshInterval();
 
   $scope.setRefreshInterval = function(refreshInterval) {
-    chromeStorage.set({"refreshInterval": refreshInterval}, function() {
+    chromeStorage.set({'refreshInterval': refreshInterval}, function() {
       $scope.getRefreshInterval();
     });
 

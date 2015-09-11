@@ -2,6 +2,8 @@
 * Used for testing to ensure chrome.storage.local exists.
 */
 
+'use strict';
+
 window.chrome = {
   storage: {
     local: {
@@ -9,12 +11,12 @@ window.chrome = {
         localStorage.clear();
       },
       get: function(name, callback) {
-          if(name != null && localStorage[name] == undefined) {
+          if(name !== null && localStorage[name] === undefined) {
             var obj = {};
             obj[name] = JSON.parse(localStorage.storage)[name];
             setTimeout(function() {callback(obj);},500);
           } else {
-            if(typeof(name) == "string") {
+            if(typeof(name) === 'string') {
               setTimeout(function() {callback(localStorage[name]);},500);
             } else {
               if(localStorage.storage !== undefined) {
@@ -25,12 +27,9 @@ window.chrome = {
             }
           }
       },
-      set: function(data, callback) {
+      set: function(data) {
           if(data !== undefined) {
-            function _addToObject(jString, objCol) {
-              localStorage.storage = JSON.stringify(jString);
-            }
-            _addToObject(data, localStorage);
+            localStorage.storage = JSON.stringify(data);
           }
       }
     }
