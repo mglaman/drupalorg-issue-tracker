@@ -1,0 +1,54 @@
+<!--<nav class="navbar navbar-default navbar-fixed-top navbar-material-blue">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+            <!--<img src="images/drupal-48.png" class="navbar-brand-image pull-left"/>-->
+            <!--<span class="navbar-brand">Drupal.org Issues</span>-->
+        <!--</div>-->
+        <!--<div id="navbar" class="navbar-collapse collapse">-->
+            <!--<ul class="nav navbar-nav navbar-right issues&#45;&#45;add-form">-->
+                <!--<li>-->
+                    <!--<div class="input-group-sm">-->
+                        <!--<button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">-->
+                            <!--<span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>-->
+                            <!--<span class="">Refresh All</span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="dropdown">-->
+                    <!--<div class="dropdown-toggle btn btn-success btn-sm" data-toggle="dropdown" id="navLogin">-->
+                        <!--<i class="fa fa-plus"></i><span class="sr-only">Add+</span></div>-->
+                    <!--<div class="dropdown-menu">-->
+
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<div layout="row" class="flex layout layout-row layout-padding layout-fill">
+    <span class="navbar-brand">Drupal.org Issues</span>
+</div>
+<div layout="row">
+    <form class="navbar-form" novalidate>
+        <md-input-container flex>
+            <label for="addIssueNid" class="sr-only">Issue Node ID</label>
+            <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="md-input" placeholder="Node ID"/>
+        </md-input-container>
+        <div class="text-center">OR</div>
+        <md-input-container flex>
+            <label for="addIssueUid" class="sr-only">Username</label>
+            <input id="addIssueUid" type="text" data-ng-model="newIssue.user" class="md-input" placeholder="Username"/>
+        </md-input-container>
+        <md-button ng-click="addIssue(newIssue)" class="md-button">Add</md-button>
+    </form>
+</div>
+<div layout="row" layout-align="end end">
+    <md-button ng-click="refreshIssues()" class="md-button">
+        <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
+        <span class="">Refresh All</span>
+    </md-button>
+    <md-button ng-click="openSettings()" class="md-button">
+        <span class="fa fa-cogs" aria-hidden="true"></span>
+        <span class="">Settings</span>
+    </md-button>
+</div>

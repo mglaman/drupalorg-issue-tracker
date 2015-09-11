@@ -8,6 +8,7 @@
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -16,72 +17,22 @@
         <!-- endbuild -->
         <base target="_blank">
     </head>
-    <body data-ng-controller="DrupalIssuesController">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="images/drupal-48.png" class="navbar-brand-image"/>
-                <span class="navbar-brand">Drupal.org Issues</span>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right issues--add-form">
-                    <li>
-                        <div class="input-group-sm">
-                            <button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">
-                                <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
-                                <span class="">Refresh All</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <div class="dropdown-toggle btn btn-success btn-sm" data-toggle="dropdown" id="navLogin">
-                            <i class="fa fa-plus"></i><span class="sr-only">Add+</span></div>
-                        <div class="dropdown-menu">
-                            <form class="navbar-form" novalidate>
-                                <div class="form-group-sm">
-                                    <label for="addIssueNid" class="sr-only">Issue Node ID</label>
-                                    <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
-                                </div>
-                                <div class="text-center">OR</div>
-                                <div class="form-group-sm">
-                                    <label for="addIssueUid" class="sr-only">Username</label>
-                                    <input id="addIssueUid" type="text" data-ng-model="newIssue.user" class="form-control" placeholder="Username"/>
-                                </div>
-                                <div class="btn-group btn-group-justified">
-                                    <div class="btn-group">
-                                        <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="input-group-sm">
-                            <button data-ng-click="openSettings()" class="btn btn-info btn-sm">
-                                <span class="fa fa-cogs" aria-hidden="true"></span>
-                                <span class="sr-only">Settings</span>
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container-fluid">
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</alert>
-        <div class="well-sm" data-ng-show="issues | objLength">
-            <div class="form-group">
-                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="form-control form"/>
-            </div>
-        </div>
-        <table class="table issues-table">
-            <thead>
+    <body data-ng-controller="DrupalIssuesController" layout="row" class="layout layout-row">
+
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open md-closed" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" style="background: #0678BE;">
+        <ng-include src="'templates/header.html'"></ng-include>
+    </md-sidenav>
+    <div layout="column" role="main" flex class="flex layout layout-column">
+        <md-toolbar class="md-warn" ng-show="issues | objLength">
+            <md-input-container>
+                <!--<label>Search issue number, summary, project name.</label>-->
+                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="md-input"/>
+            </md-input-container>
+        </md-toolbar>
+        <md-content flex layout-padding layout-fill class="flex layout layout-padding layout-fill">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</alert>
+            <table class="table issues-table">
+                <thead>
                 <tr>
                     <th class="issue-number">
                         <a href="" data-ng-click="issueOrderBy = 'nid'; reverse=!reverse">Issue #</a>
@@ -92,8 +43,8 @@
                     </th>
                     <th class="issue-operations">Operations</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" data-ng-controller="issueCtrl">
                     <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
                     <td>{{ issue.summary }}<br /><small><strong>{{ issue.project }}</strong></small></td>
@@ -116,33 +67,12 @@
                 <tr data-ng-hide="(issues | objLength)">
                     <td colspan="4">Currently no issues added in the tracker.</td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </md-content>
+        <ng-include src="'templates/footer.html'"></ng-include>
     </div>
-    <div class="container-fluid panel-footer">
-        <div class="row">
-            <div class="col-sm-8">
 
-            </div>
-            <div class="author-meta col-sm-4">
-                <span>Created by <a href="http://glamanate.com">Matt Glaman</a></span>
-                <ul class="author-social-links pull-right">
-                    <li>
-                        <a href="https://twitter.com/nmdmatt"><i class="fa fa-twitter">&nbsp;</i><span class="sr-only">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="http://www.linkedin.com/in/mattglaman"><i class="fa fa-linkedin">&nbsp;</i><span class="sr-only">LinkedIn</span></a>
-                    </li>
-                    <li>
-                        <a href="https://www.gittip.com/mglaman/"><i class="fa fa-gittip">&nbsp;</i><span class="sr-only">GitTip</span></a>
-                    </li>
-                    <li>
-                        <a href="http://drupal.org/u/mglaman"><i class="fa fa-drupal">&nbsp;</i><span class="sr-only">Drupal</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -150,6 +80,9 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
