@@ -1,3 +1,13 @@
+<md-toolbar class="md-accent">
+    <md-button ng-click="refreshIssues()" class="md-button">
+        <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
+        <span class="">Refresh All</span>
+    </md-button>
+    <md-button ng-click="openSettings()" class="md-button">
+        <span class="fa fa-cogs" aria-hidden="true"></span>
+        <span class="">Settings</span>
+    </md-button>
+</md-toolbar>
 <form>
     <md-input-container>
         <label for="addIssueNid" class="">Issue Node ID</label>
@@ -8,16 +18,5 @@
         <label for="addIssueUid" class="">Username</label>
         <input id="addIssueUid" type="text" data-ng-model="newIssue.user" class="md-input" placeholder="Username" flex layout="row" layout-fill/>
     </md-input-container>
-    <md-button ng-click="addIssue(newIssue)" class="md-button md-primary md-hue-1 md-raised" flex layout="row" style="width: 95%;">Add</md-button>
+    <md-button ng-click="addIssue(newIssue)" class="md-primary md-accent" flex layout="row" style="width: 95%;">Add</md-button>
 </form>
-
-<div layout="row" layout-align="center end">
-    <md-button ng-click="refreshIssues()" class="md-button">
-        <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
-        <span class="">Refresh All</span>
-    </md-button>
-    <md-button ng-click="openSettings()" class="md-button">
-        <span class="fa fa-cogs" aria-hidden="true"></span>
-        <span class="">Settings</span>
-    </md-button>
-</div>
