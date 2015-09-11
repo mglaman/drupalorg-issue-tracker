@@ -51,3 +51,21 @@ DrupalIssuesApp.filter('statusColorFilter', function() {
     return statusCodes[input];
   };
 });
+
+DrupalIssuesApp.filter('categoryIconlFilter', function() {
+  var statusCodes = {
+    1: 'bug',
+    2: 'check-square-o',
+    3: 'plus-square',
+    4: 'support',
+    5: 'paperclip'
+  };
+
+  return function(input) {
+    if (!input) {
+      return '';
+    }
+
+    return statusCodes[input];
+  };
+});

@@ -46,7 +46,7 @@ body {
   cursor: initial;
 }
 
-.panel-footer {
+.footer {
   //background: #0678BE;
   //border-top: 2px solid #53B0EB;
   //color: white;
@@ -87,34 +87,57 @@ body {
 }
 
 /** Issue Status Colors **/
+.issue-node-status--1,
 .issue-node-status--1 td {
   background-color: #f9f9f9;
 }
 
-.issue-node-status--2 td,
-.issue-node-status--14 td,
-.issue-node-status--15 td {
+.issue-node-status--2, .issue-node-status--2 td,
+.issue-node-status--14, .issue-node-status--14 td,
+.issue-node-status--15, .issue-node-status--15 td {
   background-color: #d7ffd8;
 }
 
-.issue-node-status--3 td,
-.issue-node-status--5 td
-.issue-node-status--6 td,
-.issue-node-status--7 td,
-.issue-node-status--18 td {
+.issue-node-status--3, .issue-node-status--3 td,
+.issue-node-status--5, .issue-node-status--5 td
+.issue-node-status--6, .issue-node-status--6 td,
+.issue-node-status--7, .issue-node-status--7 td,
+.issue-node-status--18, .issue-node-status--18 td {
   background-color: #fddddd;
 }
 
-.issue-node-status--4 td,
-.issue-node-status--16 td {
+.issue-node-status--4, .issue-node-status--4 td,
+.issue-node-status--16, .issue-node-status--16 td {
   background-color: #eff1f3;
 }
 
-.issue-node-status--8 td {
+.issue-node-status--8, .issue-node-status--8 td {
   background-color: #ffffdd;
 }
 
-.issue-node-status--13 td {
+.issue-node-status--13, .issue-node-status--13 td {
   background-color: #ffece8;
 }
 
+md-list {
+  width: 100%;
+  md-list-item {
+    position: relative;
+    padding: 0 1%;
+    h5 {
+      margin-bottom: 0;
+    }
+  }
+}
+md-toolbar.site-content-toolbar {
+  md-icon {
+    color: white;
+  }
+  color: white;
+}
+.md-secondary-container .md-button {
+  min-width: 40px;
+}
+.issue-node-category .fa {
+  padding: 10px 15px;
+}

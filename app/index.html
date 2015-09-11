@@ -37,46 +37,35 @@
             <!--<label>Search issue number, summary, project name.</label>-->
             <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="md-input" style="width: 100%; line-height: 40px;"/>
         </md-input-container>
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000" layout="row">{{alert.msg}}</alert>
-        <md-content flex layout="row" layout-padding layout-fill>
-            <table class="table issues-table">
-                <thead>
-                <tr>
-                    <th class="issue-number">
-                        <a href="" data-ng-click="issueOrderBy = 'nid'; reverse=!reverse">Issue #</a>
-                    </th>
-                    <th class="issue-summary">Summary</th>
-                    <th class="issue-status">
-                        <a href="" data-ng-click="issueOrderBy = 'status'; reverse=!reverse">Status</a>
-                    </th>
-                    <th class="issue-operations">Operations</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" data-ng-controller="issueCtrl">
-                    <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
-                    <td>{{ issue.summary }}<br /><small><strong>{{ issue.project }}</strong></small></td>
-                    <td>{{ issue.status | statusLabelFilter }}</td>
-                    <td>
-                        <button data-ng-click="openIssue(issue)" class="btn btn-default btn-sm">
-                            <span class="fa fa-search-plus" aria-hidden="true"></span>
-                            <span class="sr-only">More details</span>
-                        </button>
-                        <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spin fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
-                            <span class="sr-only">Refresh</span>
-                        </button>
-                        <button data-ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="fa fa-remove" aria-hidden="true"></span>
-                            <span class="sr-only">Remove</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr data-ng-hide="(issues | objLength)">
-                    <td colspan="4">Currently no issues added in the tracker.</td>
-                </tr>
-                </tbody>
-            </table>
+        <md-content flex layout="row" layout-fill>
+            <md-list>
+                <!--<md-subheader class="md-no-sticky">Saved issues</md-subheader>-->
+                <md-list-item layout-padding class="issue-node-status--{{ issue.status }}" ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" data-ng-controller="issueCtrl">
+                    <div layout="column" class="issue-node-category">
+                        <i class="fa fa-{{ issue.category | categoryIconlFilter }}"></i>
+                    </div>
+                    <div class="md-list-item-text" layout="column" layout-padding>
+                        <h5><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h5>
+                        <h6>{{ issue.project }}</h6>
+                        <p>{{ issue.status | statusLabelFilter }}</p>
+
+                        <div class="md-secondary-container">
+                            <md-button ng-click="openIssue(issue)" class="btn btn-default btn-sm">
+                                <span class="fa fa-search-plus" aria-hidden="true"></span>
+                                <span class="sr-only">More details</span>
+                            </md-button>
+                            <md-button ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
+                                <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spin fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
+                                <span class="sr-only">Refresh</span>
+                            </md-button>
+                            <md-button ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
+                                <span class="fa fa-remove" aria-hidden="true"></span>
+                                <span class="sr-only">Remove</span>
+                            </md-button>
+                        </div>
+                    </div>
+                </md-list-item>
+            </md-list>
         </md-content>
         <ng-include src="'templates/footer.html'"></ng-include>
     </div>

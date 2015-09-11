@@ -1,6 +1,6 @@
 /*global DrupalIssuesApp*/
 'use strict';
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', '$mdSidenav', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, $mdSidenav, chromeStorage, nodeEndpoint, nodeService, ModalService) {
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', '$mdSidenav', '$mdToast', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, $mdSidenav, $mdToast, chromeStorage, nodeEndpoint, nodeService, ModalService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
@@ -17,10 +17,12 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
    * @param message
    */
   $scope.addAlert = function(type, message) {
-    $scope.alerts.push({
-      type: type,
-      msg: message
-    });
+    $mdToast.show(
+      $mdToast.simple()
+        .content(message)
+        .position('bottom right')
+        .hideDelay(2000)
+    );
   };
 
   /**
@@ -110,6 +112,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
               'summary': issueData.title,
               'body': issueData.body.value,
               'status': issueData.field_issue_status,
+              'category': issueData.field_issue_category,
               'project': projectData.title
             };
             $scope.saveIssues();

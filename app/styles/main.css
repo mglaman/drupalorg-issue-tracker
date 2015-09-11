@@ -49,7 +49,7 @@ body {
 }
 
 /* line 49, main.scss */
-.panel-footer {
+.footer {
   font-size: 12px;
   font-weight: 100;
 }
@@ -94,38 +94,72 @@ body {
 
 /** Issue Status Colors **/
 /* line 90, main.scss */
+.issue-node-status--1,
 .issue-node-status--1 td {
   background-color: #f9f9f9;
 }
 
-/* line 94, main.scss */
-.issue-node-status--2 td,
-.issue-node-status--14 td,
-.issue-node-status--15 td {
+/* line 95, main.scss */
+.issue-node-status--2, .issue-node-status--2 td,
+.issue-node-status--14, .issue-node-status--14 td,
+.issue-node-status--15, .issue-node-status--15 td {
   background-color: #d7ffd8;
 }
 
-/* line 100, main.scss */
-.issue-node-status--3 td,
-.issue-node-status--5 td
-.issue-node-status--6 td,
-.issue-node-status--7 td,
-.issue-node-status--18 td {
+/* line 101, main.scss */
+.issue-node-status--3, .issue-node-status--3 td,
+.issue-node-status--5, .issue-node-status--5 td
+.issue-node-status--6, .issue-node-status--6 td,
+.issue-node-status--7, .issue-node-status--7 td,
+.issue-node-status--18, .issue-node-status--18 td {
   background-color: #fddddd;
 }
 
-/* line 108, main.scss */
-.issue-node-status--4 td,
-.issue-node-status--16 td {
+/* line 109, main.scss */
+.issue-node-status--4, .issue-node-status--4 td,
+.issue-node-status--16, .issue-node-status--16 td {
   background-color: #eff1f3;
 }
 
-/* line 113, main.scss */
-.issue-node-status--8 td {
+/* line 114, main.scss */
+.issue-node-status--8, .issue-node-status--8 td {
   background-color: #ffffdd;
 }
 
-/* line 117, main.scss */
-.issue-node-status--13 td {
+/* line 118, main.scss */
+.issue-node-status--13, .issue-node-status--13 td {
   background-color: #ffece8;
+}
+
+/* line 122, main.scss */
+md-list {
+  width: 100%;
+}
+/* line 124, main.scss */
+md-list md-list-item {
+  position: relative;
+  padding: 0 1%;
+}
+/* line 127, main.scss */
+md-list md-list-item h5 {
+  margin-bottom: 0;
+}
+
+/* line 132, main.scss */
+md-toolbar.site-content-toolbar {
+  color: white;
+}
+/* line 133, main.scss */
+md-toolbar.site-content-toolbar md-icon {
+  color: white;
+}
+
+/* line 138, main.scss */
+.md-secondary-container .md-button {
+  min-width: 40px;
+}
+
+/* line 141, main.scss */
+.issue-node-category .fa {
+  padding: 10px 15px;
 }
