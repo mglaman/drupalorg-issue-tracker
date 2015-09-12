@@ -141,7 +141,7 @@ md-list md-list-item {
   padding: 0 1%;
 }
 /* line 127, main.scss */
-md-list md-list-item h5 {
+md-list md-list-item h3, md-list md-list-item h4 {
   margin-bottom: 0;
 }
 

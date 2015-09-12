@@ -1,12 +1,10 @@
 /*global DrupalIssuesApp, angular*/
 'use strict';
-DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', '$mdDialog', 'ModalService', 'chromeStorage', function($scope, $interval, $mdDialog, ModalService, chromeStorage) {
-  $scope.removeIssue = function(nid) {
-    delete $scope.issues[nid];
+DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', '$mdDialog', 'ModalService', 'chromeStorage', 'issuesService', function($scope, $interval, $mdDialog, ModalService, chromeStorage, issuesService) {
+  $scope.remove = function(nid) {
+    issuesService.removeIssue(nid);
     $interval.cancel(refreshInterval);
     refreshInterval = undefined;
-    $scope.addAlert('success', 'Removed #' + nid);
-    $scope.saveIssues();
   };
 
   $scope.openIssue = function(issue) {
@@ -41,7 +39,7 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', '$mdDialog', 'Mo
   $scope.automaticRefresh = function() {
     var currentTime = Date.now();
     if ((currentTime - $scope.issue.refreshed) > $scope.refreshTime) {
-      $scope.refreshIssue($scope.issue.nid);
+      issuesService.refreshIssue($scope.issue.nid);
     }
   };
 

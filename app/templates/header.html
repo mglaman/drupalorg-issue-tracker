@@ -8,15 +8,3 @@
         <span class="">Settings</span>
     </md-button>
 </md-toolbar>
-<form>
-    <md-input-container>
-        <label for="addIssueNid" class="">Issue Node ID</label>
-        <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="md-input" placeholder="Node ID" flex layout="row" layout-fill/>
-    </md-input-container>
-    <div class="text-center">OR</div>
-    <md-input-container>
-        <label for="addIssueUid" class="">Username</label>
-        <input id="addIssueUid" type="text" data-ng-model="newIssue.user" class="md-input" placeholder="Username" flex layout="row" layout-fill/>
-    </md-input-container>
-    <md-button ng-click="addIssue(newIssue)" class="md-primary md-accent" flex layout="row" style="width: 95%;">Add</md-button>
-</form>

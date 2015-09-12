@@ -40,27 +40,24 @@
         <md-content flex layout="row" layout-fill>
             <md-list>
                 <!--<md-subheader class="md-no-sticky">Saved issues</md-subheader>-->
-                <md-list-item layout-padding class="issue-node-status--{{ issue.status }}" ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" data-ng-controller="issueCtrl">
+                <md-list-item layout-padding class="issue-node-status--{{ issue.status }}" ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" ng-controller="issueCtrl">
                     <div layout="column" class="issue-node-category">
                         <i class="fa fa-{{ issue.category | categoryIconlFilter }}"></i>
                     </div>
                     <div class="md-list-item-text" layout="column" layout-padding>
-                        <h5><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h5>
-                        <h6>{{ issue.project }}</h6>
+                        <h4><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h4>
+                        <h5>{{ issue.project }}</h5>
                         <p>{{ issue.status | statusLabelFilter }}</p>
 
                         <div class="md-secondary-container">
-                            <md-button ng-click="openIssue(issue)" class="btn btn-default btn-sm">
-                                <span class="fa fa-search-plus" aria-hidden="true"></span>
-                                <span class="sr-only">More details</span>
+                            <md-button ng-click="openIssue(issue)" class="md-raised">
+                                <md-icon md-svg-src="launch" aria-label="Open more info"></md-icon>
                             </md-button>
-                            <md-button ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
-                                <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spin fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
-                                <span class="sr-only">Refresh</span>
+                            <md-button ng-click="refresh(issue.nid)" class="md-raised">
+                                <md-icon md-svg-src="refresh" aria-label="Refresh"></md-icon>
                             </md-button>
-                            <md-button ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
-                                <span class="fa fa-remove" aria-hidden="true"></span>
-                                <span class="sr-only">Remove</span>
+                            <md-button ng-click="remove(issue.nid)" class="md-raised">
+                                <md-icon md-svg-src="clear" aria-label="Remove issue"></md-icon>
                             </md-button>
                         </div>
                     </div>
@@ -95,6 +92,8 @@
     <script src="scripts/filters/statusFilter.js"></script>
     <script src="scripts/filters/orderObjectBy.js"></script>
     <script src="scripts/services/apiService.js"></script>
+    <script src="scripts/services/issuesService.js"></script>
+    <script src="scripts/services/toastService.js"></script>
     <!-- endbuild -->
     </body>
 </html>
