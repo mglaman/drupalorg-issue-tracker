@@ -16,7 +16,7 @@
         <!-- endbuild -->
         <base target="_blank">
     </head>
-    <body data-ng-controller="DrupalIssuesController" layout="row" class="layout layout-row">
+    <body data-ng-controller="DrupalIssuesController" layout="row" class="layout layout-row md-body-1">
 
     <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-closed" md-component-id="left" tabindex="-1">
         <ng-include src="'templates/header.html'"></ng-include>
@@ -44,8 +44,8 @@
                         <i class="fa fa-{{ issue.category | categoryIconlFilter }}"></i>
                     </div>
                     <div class="md-list-item-text" layout="column" layout-padding>
-                        <h4><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h4>
-                        <h5>{{ issue.project }}</h5>
+                        <h2 class="md-subhead"><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h2>
+                        <h3 class="md-body-2">{{ issue.project }}</h3>
                         <p>{{ issue.status | statusLabelFilter }}</p>
 
                         <div class="md-secondary-container">

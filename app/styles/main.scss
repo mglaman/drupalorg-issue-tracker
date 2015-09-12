@@ -46,14 +46,22 @@ body {
   cursor: initial;
 }
 
+a {
+  color: #106CC8;
+  text-decoration: none;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(64, 84, 178, 0.25);
+  -webkit-transition: border-bottom 0.35s;
+  -moz-transition: border-bottom 0.35s;
+  -ms-transition: border-bottom 0.35s;
+  -o-transition: border-bottom 0.35s;
+  transition: border-bottom 0.35s;
+}
+
 .footer {
-  //background: #0678BE;
-  //border-top: 2px solid #53B0EB;
-  //color: white;
   font-size: 12px;
   font-weight: 100;
   a {
-    //color: #f5f5f5;
   }
 }
 
@@ -83,6 +91,9 @@ body {
     margin: 0;
     padding: 0;
     display: inline-block;
+  }
+  a {
+    border-bottom: 0;
   }
 }
 
@@ -124,8 +135,8 @@ md-list {
   md-list-item {
     position: relative;
     padding: 0 1%;
-    h3, h4, h5 {
-      margin-bottom: 0;
+    h2, h3, h4, h5 {
+      margin: 0;
     }
   }
 }

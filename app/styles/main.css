@@ -49,35 +49,48 @@ body {
 }
 
 /* line 49, main.scss */
+a {
+  color: #106CC8;
+  text-decoration: none;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(64, 84, 178, 0.25);
+  -webkit-transition: border-bottom 0.35s;
+  -moz-transition: border-bottom 0.35s;
+  -ms-transition: border-bottom 0.35s;
+  -o-transition: border-bottom 0.35s;
+  transition: border-bottom 0.35s;
+}
+
+/* line 61, main.scss */
 .footer {
   font-size: 12px;
   font-weight: 100;
 }
 
-/* line 60, main.scss */
+/* line 68, main.scss */
 .issues-table {
   table-layout: fixed;
 }
-/* line 62, main.scss */
+/* line 70, main.scss */
 .issues-table .issue-number {
   width: 100px;
 }
-/* line 65, main.scss */
+/* line 73, main.scss */
 .issues-table .issue-status {
   width: 175px;
 }
-/* line 68, main.scss */
+/* line 76, main.scss */
 .issues-table .issue-operations {
   width: 125px;
 }
 
-/* line 72, main.scss */
+/* line 80, main.scss */
 .author-meta {
   line-height: 18px;
   text-align: right;
 }
 
-/* line 76, main.scss */
+/* line 84, main.scss */
 .author-social-links {
   margin: 0;
   padding: 0 0 0 10px;
@@ -85,28 +98,32 @@ body {
   list-style: none;
   font-size: 18px;
 }
-/* line 82, main.scss */
+/* line 90, main.scss */
 .author-social-links li {
   margin: 0;
   padding: 0;
   display: inline-block;
 }
+/* line 95, main.scss */
+.author-social-links a {
+  border-bottom: 0;
+}
 
 /** Issue Status Colors **/
-/* line 90, main.scss */
+/* line 101, main.scss */
 .issue-node-status--1,
 .issue-node-status--1 td {
   background-color: #f9f9f9;
 }
 
-/* line 95, main.scss */
+/* line 106, main.scss */
 .issue-node-status--2, .issue-node-status--2 td,
 .issue-node-status--14, .issue-node-status--14 td,
 .issue-node-status--15, .issue-node-status--15 td {
   background-color: #d7ffd8;
 }
 
-/* line 101, main.scss */
+/* line 112, main.scss */
 .issue-node-status--3, .issue-node-status--3 td,
 .issue-node-status--5, .issue-node-status--5 td
 .issue-node-status--6, .issue-node-status--6 td,
@@ -115,56 +132,56 @@ body {
   background-color: #fddddd;
 }
 
-/* line 109, main.scss */
+/* line 120, main.scss */
 .issue-node-status--4, .issue-node-status--4 td,
 .issue-node-status--16, .issue-node-status--16 td {
   background-color: #eff1f3;
 }
 
-/* line 114, main.scss */
+/* line 125, main.scss */
 .issue-node-status--8, .issue-node-status--8 td {
   background-color: #ffffdd;
 }
 
-/* line 118, main.scss */
+/* line 129, main.scss */
 .issue-node-status--13, .issue-node-status--13 td {
   background-color: #ffece8;
 }
 
-/* line 122, main.scss */
+/* line 133, main.scss */
 md-list {
   width: 100%;
 }
-/* line 124, main.scss */
+/* line 135, main.scss */
 md-list md-list-item {
   position: relative;
   padding: 0 1%;
 }
-/* line 127, main.scss */
-md-list md-list-item h3, md-list md-list-item h4 {
-  margin-bottom: 0;
+/* line 138, main.scss */
+md-list md-list-item h2, md-list md-list-item h3, md-list md-list-item h4, md-list md-list-item h5 {
+  margin: 0;
 }
 
-/* line 132, main.scss */
+/* line 143, main.scss */
 md-toolbar.site-content-toolbar {
   color: white;
 }
-/* line 133, main.scss */
+/* line 144, main.scss */
 md-toolbar.site-content-toolbar md-icon {
   color: white;
 }
 
-/* line 138, main.scss */
+/* line 149, main.scss */
 .md-secondary-container .md-button {
   min-width: 40px;
 }
 
-/* line 141, main.scss */
+/* line 152, main.scss */
 .issue-node-category .fa {
   padding: 10px 15px;
 }
 
-/* line 145, main.scss */
+/* line 156, main.scss */
 .app-fab {
   position: absolute;
   bottom: 10%;
