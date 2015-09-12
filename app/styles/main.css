@@ -163,3 +163,10 @@ md-toolbar.site-content-toolbar md-icon {
 .issue-node-category .fa {
   padding: 10px 15px;
 }
+
+/* line 145, main.scss */
+.app-fab {
+  position: absolute;
+  bottom: 10%;
+  right: 1%;
+}

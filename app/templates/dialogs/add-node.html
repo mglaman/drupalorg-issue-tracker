@@ -1,0 +1,9 @@
+<md-dialog>
+    <md-content layout-padding style="max-width:800px;max-height:810px; ">
+        <md-input-container>
+            <label for="addIssueNid" class="">Issue Node ID</label>
+            <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="md-input" flex layout="row" layout-fill/>
+        </md-input-container>
+        <md-button ng-click="addIssue(newIssue); close()" class="md-primary md-accent" flex layout="row" style="width: 95%;">Add</md-button>
+    </md-content>
+</md-dialog>

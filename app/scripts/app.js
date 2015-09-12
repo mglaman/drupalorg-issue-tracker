@@ -11,9 +11,13 @@ DrupalIssuesApp
       .primaryPalette('light-blue')
       .accentPalette('orange');
     $mdIconProvider
-      .icon("menu", "./images/svg/menu.svg", 24);
+      .icon('menu', './images/svg/menu.svg', 24)
+      .icon('add', './images/svg/add.svg', 24)
+      .icon('copy', './images/svg/copy.svg', 24)
+      .icon('person', './images/svg/person.svg', 24)
+      .icon('refresh', './images/svg/refresh.svg', 24);
   })
-  // @todo: Move this to a "helpers" directives file.
+  // @todo: Move this to a 'helpers' directives file.
   .directive('autoSelectText', function () {
     return {
       restrict: 'A',

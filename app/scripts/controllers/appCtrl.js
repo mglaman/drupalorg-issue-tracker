@@ -1,10 +1,9 @@
-/*global DrupalIssuesApp*/
+/*global DrupalIssuesApp, angular*/
 'use strict';
-DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', '$mdSidenav', '$mdToast', 'chromeStorage', 'nodeEndpoint', 'nodeService', 'ModalService', function($scope, $http, $timeout, $mdSidenav, $mdToast, chromeStorage, nodeEndpoint, nodeService, ModalService) {
+DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', '$mdSidenav', '$mdToast', '$mdDialog', 'chromeStorage', 'apiService', function($scope, $http, $timeout, $mdSidenav, $mdToast, $mdDialog, chromeStorage, apiService) {
   $scope.issues = {};
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
-  $scope.alerts = [];
 
   $scope.toggleSidenav = function () {
     $mdSidenav('left').toggle();
@@ -23,15 +22,6 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
         .position('bottom right')
         .hideDelay(2000)
     );
-  };
-
-  /**
-   * Removes an alert.
-   *
-   * @param index
-   */
-  $scope.closeAlert = function(index) {
-    $scope.alerts.splice(index, 1);
   };
 
   chromeStorage.get('issueNodes', function(result) {
@@ -66,7 +56,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   $scope.addUser = function(uid) {
     $scope.ajaxInProcess = uid;
 
-    nodeService.getUser(uid)
+    apiService.getUser(uid)
       .success(function(userData) {
         var $xml = $($.parseXML(userData));
         $xml.find('item').each(function() {
@@ -85,10 +75,10 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   $scope.refreshIssue = function(nid) {
     $scope.ajaxInProcess = nid;
 
-    nodeService.getNode(nid)
+    apiService.getNode(nid)
       .success(function(issueData) {
 
-        nodeService.getNode(issueData.field_project.id)
+        apiService.getNode(issueData.field_project.id)
           .success(function(projectData) {
 
             $scope.issues[issueData.nid] = {
@@ -114,6 +104,7 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   $scope.refreshIssues = function() {
+    $mdSidenav('left').close();
     $scope.ajaxInProcess = true;
 
     var keys = Object.keys($scope.issues);
@@ -132,18 +123,26 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
     $scope.ajaxInProcess = false;
   };
 
-  $scope.openSettings = function() {
-    ModalService.showModal({
-      templateUrl: 'templates/settingsModal.html',
+  $scope.openSettings = function(ev) {
+    $mdSidenav('left').close();
+    $mdDialog.show({
+      templateUrl: 'templates/dialogs/settings.html',
       controller: 'SettingsModalController',
-      inputs: {
-        issues: $scope.issues,
-        // hacky way to allow importing of issues w/o copy+paste of func ;)
-        // @todo: Need to move this stuff into a service (1.1.x)
-        refreshMethod: $scope.refreshIssue
-      }
-    }).then(function(modal) {
-      modal.element.modal();
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      issues: $scope.issues,
+      refreshMethod: $scope.refreshIssue
+    });
+  };
+
+  $scope.openNewIssueDialog = function (ev) {
+    $mdDialog.show({
+      templateUrl: 'templates/dialogs/add-node.html',
+      controller: 'GenericDialogController',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
     });
   };
 }]);

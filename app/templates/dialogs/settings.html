@@ -1,0 +1,46 @@
+<md-dialog aria-label="Settings">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="modal-title">Configuration</h2>
+            <span flex></span>
+            <md-button class="md-icon-button">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content style="max-width:800px;max-height:810px; ">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Refresh interval</label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="{{ refreshInterval }}" placeholder="30" data-ng-model="refreshInterval" data-ng-blur="setRefreshInterval(refreshInterval)"/>
+                        <span class="input-group-addon">minutes</span>
+                    </div>
+                    <p class="help-block">How many minutes before issues refresh their status. For now you need to set value, then close and reopen the app.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exportNodeJSON" class="col-sm-3 control-label">Export node issues</label>
+                <div class="col-sm-9">
+                    <textarea id="exportNodeJSON" class="form-control" rows="8" data-auto-select-text>{{ export }}</textarea>
+                    <p class="help-block">Copy this and share to be imported into other instances of the app.</p>
+                </div>
+            </div>
+        </form>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="importNodeJSON" class="col-sm-3 control-label">Import node issues</label>
+                <div class="col-sm-9">
+                    <textarea id="importNodeJSON" class="form-control" rows="8" data-ng-model="importJSON"></textarea>
+                    <p class="help-block">Import a JSON object of issue node IDs exported from another app. <em>Note: this will not delete existing issues, only force them to refresh.</em></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-success" data-ng-click="importIssues(importJSON)">Import issues</button>
+                </div>
+            </div>
+        </form>
+    </md-content>
+</md-dialog>

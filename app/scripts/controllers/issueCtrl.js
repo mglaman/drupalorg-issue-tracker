@@ -1,6 +1,6 @@
-/*global DrupalIssuesApp*/
+/*global DrupalIssuesApp, angular*/
 'use strict';
-DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 'chromeStorage', function($scope, $interval, ModalService, chromeStorage) {
+DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', '$mdDialog', 'ModalService', 'chromeStorage', function($scope, $interval, $mdDialog, ModalService, chromeStorage) {
   $scope.removeIssue = function(nid) {
     delete $scope.issues[nid];
     $interval.cancel(refreshInterval);
@@ -15,14 +15,13 @@ DrupalIssuesApp.controller('issueCtrl', ['$scope', '$interval', 'ModalService', 
     // @see https://developer.chrome.com/apps/app_external#external
     issue.body = issue.body.replace(/<img.*?\/>/ig, '');
 
-    ModalService.showModal({
-      templateUrl: 'templates/modal.html',
-      controller: 'ModalController',
-      inputs: {
-        issue: issue
-      }
-    }).then(function(modal) {
-      modal.element.modal();
+
+    $mdDialog.show({
+      templateUrl: '../../templates/dialogs/issue-dialog.html',
+      controller: 'IssueDialogController',
+      parent: angular.element(document.body),
+      clickOutsideToClose:true,
+      issue: issue
     });
   };
 

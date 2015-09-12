@@ -26,7 +26,7 @@
         <md-toolbar class="site-content-toolbar">
             <div class="md-toolbar-tools" ng-click="toggleSidenav()" tabindex="-1" role="button">
                 <md-button class="md-icon-button" aria-label="Show side menu" style="float: left;">
-                    <md-icon md-svg-icon="menu" ></md-icon>
+                    <md-icon md-svg-icon="menu"></md-icon>
                 </md-button>
                 <div layout="row" flex class="fill-height">
                     <h2 class="md-toolbar-item md-headline">Drupal.org Issues</h2>
@@ -67,6 +67,7 @@
                 </md-list-item>
             </md-list>
         </md-content>
+        <ng-include src="'templates/fab.html'"></ng-include>
         <ng-include src="'templates/footer.html'"></ng-include>
     </div>
 
@@ -87,12 +88,13 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/appCtrl.js"></script>
     <script src="scripts/controllers/issueCtrl.js"></script>
-    <script src="scripts/controllers/modal.js"></script>
+    <script src="scripts/controllers/issueDialog.js"></script>
     <script src="scripts/controllers/settingsModal.js"></script>
+    <script src="scripts/controllers/genericDialog.js"></script>
     <script src="scripts/directives/alerts.js"></script>
     <script src="scripts/filters/statusFilter.js"></script>
     <script src="scripts/filters/orderObjectBy.js"></script>
-    <script src="scripts/services/nodeService.js"></script>
+    <script src="scripts/services/apiService.js"></script>
     <!-- endbuild -->
     </body>
 </html>
