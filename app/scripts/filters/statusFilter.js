@@ -55,10 +55,10 @@ DrupalIssuesApp.filter('statusColorFilter', function() {
 DrupalIssuesApp.filter('categoryIconlFilter', function() {
   var statusCodes = {
     1: 'bug',
-    2: 'check-square-o',
-    3: 'plus-square',
-    4: 'support',
-    5: 'paperclip'
+    2: 'task',
+    3: 'add-box',
+    4: 'help',
+    5: 'plan'
   };
 
   return function(input) {

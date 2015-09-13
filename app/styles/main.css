@@ -187,3 +187,8 @@ md-toolbar.site-content-toolbar md-icon {
   bottom: 10%;
   right: 1%;
 }
+
+/* line 161, main.scss */
+.md-avatar {
+  text-align: center;
+}

@@ -18,6 +18,10 @@ DrupalIssuesApp
       .icon('clear', './images/svg/clear.svg', 24)
       .icon('bug', './images/svg/bug.svg', 24)
       .icon('launch', './images/svg/launch.svg', 24)
+      .icon('help', './images/svg/help.svg', 24)
+      .icon('add-box', './images/svg/add-box.svg', 24)
+      .icon('plan', './images/svg/plan.svg', 24)
+      .icon('task', './images/svg/task.svg', 24)
       .icon('refresh', './images/svg/refresh.svg', 24);
   })
   // @todo: Move this to a 'helpers' directives file.

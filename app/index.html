@@ -40,8 +40,9 @@
             <md-list>
                 <!--<md-subheader class="md-no-sticky">Saved issues</md-subheader>-->
                 <md-list-item layout-padding class="issue-node-status--{{ issue.status }}" ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" ng-controller="issueCtrl">
-                    <div layout="column" class="issue-node-category">
-                        <i class="fa fa-{{ issue.category | categoryIconlFilter }}"></i>
+                    <div class="issue-node-category md-avatar">
+                        <!--<i class="fa fa-{{ issue.category | categoryIconlFilter }}"></i>-->
+                        <md-icon md-svg-src="{{ issue.category | categoryIconlFilter }}" aria-label="{{ issue.category | categoryIconlFilter }}"></md-icon>
                     </div>
                     <div class="md-list-item-text" layout="column" layout-padding>
                         <h2 class="md-subhead"><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h2>
@@ -49,13 +50,13 @@
                         <p>{{ issue.status | statusLabelFilter }}</p>
 
                         <div class="md-secondary-container">
-                            <md-button ng-click="openIssue(issue)" class="md-raised">
+                            <md-button ng-click="openIssue(issue)" class="">
                                 <md-icon md-svg-src="launch" aria-label="Open more info"></md-icon>
                             </md-button>
-                            <md-button ng-click="refresh(issue.nid)" class="md-raised">
+                            <md-button ng-click="refresh(issue.nid)" class="">
                                 <md-icon md-svg-src="refresh" aria-label="Refresh"></md-icon>
                             </md-button>
-                            <md-button ng-click="remove(issue.nid)" class="md-raised">
+                            <md-button ng-click="remove(issue.nid)" class="">
                                 <md-icon md-svg-src="clear" aria-label="Remove issue"></md-icon>
                             </md-button>
                         </div>
