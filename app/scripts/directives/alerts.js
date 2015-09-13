@@ -6,11 +6,29 @@ DrupalIssuesApp
     $scope.closeable = 'close' in $attrs;
     this.close = $scope.close;
   }])
+  .controller('ToastCtrl', function($scope, $mdToast) {
+    $scope.closeToast = function() {
+      $mdToast.hide();
+    };
+  })
   .directive('alert', function() {
     return {
       restrict: 'EA',
       controller: 'AlertController',
       templateUrl: 'templates/alert.html',
+      transclude: true,
+      replace: true,
+      scope: {
+        type: '@',
+        close: '&'
+      }
+    };
+  })
+  .directive('toast', function() {
+    return {
+      restrict: 'EA',
+      controller: 'ToastCtrl',
+      templateUrl: 'templates/toast.html',
       transclude: true,
       replace: true,
       scope: {

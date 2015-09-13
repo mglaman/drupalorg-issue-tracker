@@ -1,0 +1,21 @@
+<md-fab-speed-dial md-direction="up" class="md-fling app-fab" md-open="isOpen" ng-mouseenter="isOpen=true" ng-mouseleave="isOpen=false">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-warn" ng-click="toggleSidenav()">
+            <md-icon md-svg-icon="add" aria-label="menu"></md-icon>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button aria-label="Add node" class="md-fab md-raised md-mini" ng-click="openNewIssueDialog()">
+            <md-tooltip md-direction="left">Add a node</md-tooltip>
+            <md-icon md-svg-src="copy" aria-label="Add a node"></md-icon>
+        </md-button>
+        <md-button aria-label="Add by user" class="md-fab md-raised md-mini" ng-click="openNewFromUserDialog()">
+            <md-tooltip md-direction="left">Add by user</md-tooltip>
+            <md-icon md-svg-src="person" aria-label="Add by user"></md-icon>
+        </md-button>
+        <md-button aria-label="Refresh" class="md-fab md-raised md-mini" ng-click="refreshIssues()">
+            <md-tooltip md-direction="left">Refresh all issues</md-tooltip>
+            <md-icon md-svg-src="refresh" aria-label="Refresh"></md-icon>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>

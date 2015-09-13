@@ -1,6 +1,6 @@
 /*global DrupalIssuesApp*/
 'use strict';
-DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', 'chromeStorage', 'issues', 'refreshMethod', 'close', function($scope, $timeout, chromeStorage, issues, refreshMethod, close) {
+DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', '$mdDialog', 'toastService', 'chromeStorage', 'issues', 'refreshMethod', function($scope, $timeout, $mdDialog, toastService, chromeStorage, issues, refreshMethod) {
   $scope.issues = issues;
   $scope.refreshMethod = refreshMethod;
   $scope.export = Object.keys(issues);
@@ -18,8 +18,12 @@ DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', 'ch
   $scope.getRefreshInterval();
 
   $scope.setRefreshInterval = function(refreshInterval) {
+    if (refreshInterval !== $scope.refreshInterval) {
+
+    }
     chromeStorage.set({'refreshInterval': refreshInterval}, function() {
       $scope.getRefreshInterval();
+      toastService.add('notice', 'Refresh interval saved.');
     });
 
   };
@@ -47,7 +51,7 @@ DrupalIssuesApp.controller('SettingsModalController', ['$scope', '$timeout', 'ch
   };
 
   $scope.close = function() {
-    close({}, 500); // close, but give 500ms for bootstrap to animate
+    $mdDialog.hide();
   };
 
 }]);

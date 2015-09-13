@@ -1,0 +1,11 @@
+<md-dialog>
+    <md-content layout-padding>
+        <form layout="row" layout-align="center center">
+            <md-input-container md-no-float>
+                <label for="addIssueNid" class="">Issue Node ID</label>
+                <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="md-input md-accent" layout-fill/>
+            </md-input-container>
+            <md-button ng-click="add(newIssue); close()" class="md-primary">Add</md-button>
+        </form>
+    </md-content>
+</md-dialog>

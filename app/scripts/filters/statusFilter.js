@@ -51,3 +51,21 @@ DrupalIssuesApp.filter('statusColorFilter', function() {
     return statusCodes[input];
   };
 });
+
+DrupalIssuesApp.filter('categoryIconlFilter', function() {
+  var statusCodes = {
+    1: 'bug',
+    2: 'task',
+    3: 'add-box',
+    4: 'help',
+    5: 'plan'
+  };
+
+  return function(input) {
+    if (!input) {
+      return '';
+    }
+
+    return statusCodes[input];
+  };
+});
