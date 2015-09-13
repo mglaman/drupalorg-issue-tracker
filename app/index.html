@@ -6,8 +6,8 @@
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -16,137 +16,67 @@
         <!-- endbuild -->
         <base target="_blank">
     </head>
-    <body data-ng-controller="DrupalIssuesController">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="images/drupal-48.png" class="navbar-brand-image"/>
-                <span class="navbar-brand">Drupal.org Issues</span>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right issues--add-form">
-                    <li>
-                        <div class="input-group-sm">
-                            <button data-ng-click="refreshIssues()" class="btn btn-default btn-sm">
-                                <span class="fa" data-ng-class="{'fa-refresh': !ajaxInProcess, 'fa-spin fa-spinner': (ajaxInProcess != false)}" aria-hidden="true"></span>
-                                <span class="">Refresh All</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <div class="dropdown-toggle btn btn-success btn-sm" data-toggle="dropdown" id="navLogin">
-                            <i class="fa fa-plus"></i><span class="sr-only">Add+</span></div>
-                        <div class="dropdown-menu">
-                            <form class="navbar-form" novalidate>
-                                <div class="form-group-sm">
-                                    <label for="addIssueNid" class="sr-only">Issue Node ID</label>
-                                    <input id="addIssueNid" type="text" data-ng-model="newIssue.nid" class="form-control" placeholder="Node ID"/>
-                                </div>
-                                <div class="text-center">OR</div>
-                                <div class="form-group-sm">
-                                    <label for="addIssueUid" class="sr-only">Username</label>
-                                    <input id="addIssueUid" type="text" data-ng-model="newIssue.user" class="form-control" placeholder="Username"/>
-                                </div>
-                                <div class="btn-group btn-group-justified">
-                                    <div class="btn-group">
-                                        <button type="submit" class="btn btn-success btn-sm"  data-ng-click="addIssue(newIssue)">Add</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="input-group-sm">
-                            <button data-ng-click="openSettings()" class="btn btn-info btn-sm">
-                                <span class="fa fa-cogs" aria-hidden="true"></span>
-                                <span class="sr-only">Settings</span>
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container-fluid">
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</alert>
-        <div class="well-sm">
-            <div class="form-group">
-                <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="form-control form"/>
-            </div>
-        </div>
-        <table class="table issues-table">
-            <thead>
-                <tr>
-                    <th class="issue-number">
-                        <a href="" data-ng-click="issueOrderBy = 'nid'; reverse=!reverse">Issue #</a>
-                    </th>
-                    <th class="issue-summary">Summary</th>
-                    <th class="issue-status">
-                        <a href="" data-ng-click="issueOrderBy = 'status'; reverse=!reverse">Status</a>
-                    </th>
-                    <th class="issue-operations">Operations</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="issue-node-status--{{ issue.status }}" data-ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" data-ng-controller="issueCtrl">
-                    <td><a href="https://www.drupal.org/node/{{ issue.nid }}">#{{ issue.nid }}</a></td>
-                    <td>{{ issue.summary }}<br /><small><strong>{{ issue.project }}</strong></small></td>
-                    <td>{{ issue.status | statusLabelFilter }}</td>
-                    <td>
-                        <button data-ng-click="openIssue(issue)" class="btn btn-default btn-sm">
-                            <span class="fa fa-search-plus" aria-hidden="true"></span>
-                            <span class="sr-only">More details</span>
-                        </button>
-                        <button data-ng-click="refreshIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="fa" data-ng-class="{'fa-refresh': (ajaxInProcess != issue.nid), 'fa-spin fa-spinner': (ajaxInProcess == issue.nid)}" aria-hidden="true"></span>
-                            <span class="sr-only">Refresh</span>
-                        </button>
-                        <button data-ng-click="removeIssue(issue.nid)" class="btn btn-default btn-sm">
-                            <span class="fa fa-remove" aria-hidden="true"></span>
-                            <span class="sr-only">Remove</span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="container-fluid panel-footer">
-        <div class="row">
-            <div class="col-sm-8">
+    <body data-ng-controller="DrupalIssuesController" layout="row" class="layout layout-row md-body-1">
 
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-closed" md-component-id="left" tabindex="-1">
+        <ng-include src="'templates/header.html'"></ng-include>
+    </md-sidenav>
+    <div layout="column" role="main" flex class="flex layout layout-column">
+        <md-toolbar class="site-content-toolbar">
+            <div class="md-toolbar-tools" ng-click="toggleSidenav()" tabindex="-1" role="button">
+                <md-button class="md-icon-button" aria-label="Show side menu" style="float: left;">
+                    <md-icon md-svg-icon="menu"></md-icon>
+                </md-button>
+                <div layout="row" flex class="fill-height">
+                    <h2 class="md-toolbar-item md-headline">Drupal.org Issues</h2>
+                </div>
             </div>
-            <div class="author-meta col-sm-4">
-                <span>Created by <a href="http://glamanate.com">Matt Glaman</a></span>
-                <ul class="author-social-links pull-right">
-                    <li>
-                        <a href="https://twitter.com/nmdmatt"><i class="fa fa-twitter">&nbsp;</i><span class="sr-only">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="http://www.linkedin.com/in/mattglaman"><i class="fa fa-linkedin">&nbsp;</i><span class="sr-only">LinkedIn</span></a>
-                    </li>
-                    <li>
-                        <a href="https://www.gittip.com/mglaman/"><i class="fa fa-gittip">&nbsp;</i><span class="sr-only">GitTip</span></a>
-                    </li>
-                    <li>
-                        <a href="http://drupal.org/u/mglaman"><i class="fa fa-drupal">&nbsp;</i><span class="sr-only">Drupal</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </md-toolbar>
+        <md-input-container ng-show="issues | objLength" layout="row" md-no-float>
+            <!--<label>Search issue number, summary, project name.</label>-->
+            <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="md-input" style="width: 100%; line-height: 40px;"/>
+        </md-input-container>
+        <md-content flex layout="row" layout-fill>
+            <md-list>
+                <!--<md-subheader class="md-no-sticky">Saved issues</md-subheader>-->
+                <md-list-item layout-padding class="issue-node-status--{{ issue.status }}" ng-repeat="issue in issues | orderObjectBy:issueOrderBy:reverse | filter:issueSummarySearch track by $index" ng-controller="issueCtrl">
+                    <div class="issue-node-category md-avatar">
+                        <!--<i class="fa fa-{{ issue.category | categoryIconlFilter }}"></i>-->
+                        <md-icon md-svg-src="{{ issue.category | categoryIconlFilter }}" aria-label="{{ issue.category | categoryIconlFilter }}"></md-icon>
+                    </div>
+                    <div class="md-list-item-text" layout="column" layout-padding>
+                        <h2 class="md-subhead"><a href="https://www.drupal.org/node/{{ issue.nid }}" class="md-avatar">#{{ issue.nid }}</a> {{ issue.summary }}</h2>
+                        <h3 class="md-body-2">{{ issue.project }}</h3>
+                        <p>{{ issue.status | statusLabelFilter }}</p>
+
+                        <div class="md-secondary-container">
+                            <md-button ng-click="openIssue(issue)" class="">
+                                <md-icon md-svg-src="launch" aria-label="Open more info"></md-icon>
+                            </md-button>
+                            <md-button ng-click="refresh(issue.nid)" class="">
+                                <md-icon md-svg-src="refresh" aria-label="Refresh"></md-icon>
+                            </md-button>
+                            <md-button ng-click="remove(issue.nid)" class="">
+                                <md-icon md-svg-src="clear" aria-label="Remove issue"></md-icon>
+                            </md-button>
+                        </div>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+        <ng-include src="'templates/fab.html'"></ng-include>
+        <ng-include src="'templates/footer.html'"></ng-include>
     </div>
+
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -154,12 +84,15 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/appCtrl.js"></script>
     <script src="scripts/controllers/issueCtrl.js"></script>
-    <script src="scripts/controllers/modal.js"></script>
+    <script src="scripts/controllers/issueDialog.js"></script>
     <script src="scripts/controllers/settingsModal.js"></script>
+    <script src="scripts/controllers/genericDialog.js"></script>
     <script src="scripts/directives/alerts.js"></script>
     <script src="scripts/filters/statusFilter.js"></script>
     <script src="scripts/filters/orderObjectBy.js"></script>
-    <script src="scripts/services/nodeService.js"></script>
+    <script src="scripts/services/apiService.js"></script>
+    <script src="scripts/services/issuesService.js"></script>
+    <script src="scripts/services/toastService.js"></script>
     <!-- endbuild -->
     </body>
 </html>
