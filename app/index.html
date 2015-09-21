@@ -36,6 +36,10 @@
             <!--<label>Search issue number, summary, project name.</label>-->
             <input type="text" tabindex="1" data-ng-model="issueSummarySearch" placeholder="Search issue number, summary, project name." class="md-input" style="width: 100%; line-height: 40px;"/>
         </md-input-container>
+        <div ng-show="showHelper" layout="column" flex layout-padding layout-margin="" style="text-align: center;">
+            <h1 class="md-display-1">You don't have any issues yet, to get started why not import the ones <a ng-click="openNewFromUserDialog()">you follow?</a></h1>
+            <h2 class="md-headline">Hover over the + button to get started! </h2>
+        </div>
         <md-content flex layout="row" layout-fill>
             <md-list>
                 <!--<md-subheader class="md-no-sticky">Saved issues</md-subheader>-->

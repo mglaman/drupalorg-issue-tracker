@@ -1,7 +1,8 @@
 /*global DrupalIssuesApp, angular*/
 'use strict';
 DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeout', '$mdSidenav', 'toastService', '$mdDialog', 'chromeStorage', 'apiService', 'issuesService', function($scope, $http, $timeout, $mdSidenav, toastService, $mdDialog, chromeStorage, apiService, issuesService) {
-  $scope.issues = {};
+  $scope.issues = [];
+  $scope.showHelper = true;
   $scope.issueOrderBy = 'nid';
   $scope.ajaxInProcess = false;
 
@@ -10,7 +11,10 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   };
 
   issuesService.getIssues().then(function (results) {
-    $scope.issues = results;
+    if (typeof results.length !== 'undefined') {
+      $scope.issues = results;
+      $scope.showHelper = false;
+    }
   });
 
   /**
@@ -26,7 +30,6 @@ DrupalIssuesApp.controller('DrupalIssuesController',['$scope', '$http', '$timeou
   $scope.refresh = function(nid) {
     $scope.ajaxInProcess = nid;
     issuesService.refreshIssue(nid).then(function (bool) {
-      console.log('refresh resolved.');
       $scope.ajaxInProcess = false;
     });
   };
